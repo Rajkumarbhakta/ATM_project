@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class activity_login extends AppCompatActivity {
+public class login_activity extends AppCompatActivity {
 Button submit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ Button submit;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(activity_login.this, "Enter account number and PIN", Toast.LENGTH_SHORT).show();
+                Toast.makeText(login_activity.this, "Enter account number and PIN", Toast.LENGTH_SHORT).show();
             }
         });
 

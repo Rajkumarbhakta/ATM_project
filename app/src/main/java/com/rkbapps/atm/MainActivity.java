@@ -17,7 +17,7 @@ Button bt;
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, activity_login.class);
+                Intent intent = new Intent(MainActivity.this, login_activity.class);
                 startActivity(intent);
             }
         });
