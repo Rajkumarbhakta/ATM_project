@@ -12,4 +12,9 @@
     <string name="account_number">Account Number</string>
     <string name="pin">PIN</string>
     <string name="submit">Submit</string>
+    <string name="new_account">Dont have account ? Open Now</string>
+    <string name="login">Login</string>
+    <string name="forget_password">forget password ?</string>
+    <string name="forget_account_number">forget account number ?</string>
+    <string name="title_activity_main2">MainActivity2</string>
 </resources>

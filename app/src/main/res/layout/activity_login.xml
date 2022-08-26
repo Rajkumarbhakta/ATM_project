@@ -22,18 +22,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Login"
-            android:textColor="@color/purple_500"
-            android:textSize="30sp"
-            android:textStyle="bold">
-
-        </TextView>
 
         <EditText
             android:id="@+id/account_number"
@@ -47,7 +36,8 @@
             android:hint="@string/account_number"
             android:inputType="number"
             android:padding="7dp"
-            android:textColorHint="@color/white">
+            android:textColorHint="@color/white"
+            android:autofillHints="Account Number">
 
         </EditText>
 
@@ -66,19 +56,27 @@
             android:textColorHint="@color/white">
 
         </EditText>
+
         <Button
             android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/submit"
             android:padding="6dp"
-            >
+            android:text="@string/submit">
 
         </Button>
 
+        <TextView
+            android:id="@+id/newaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_account"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+"
 
     </LinearLayout>
-
-
 </RelativeLayout>
