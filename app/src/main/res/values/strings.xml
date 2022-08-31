@@ -17,4 +17,8 @@
     <string name="forget_password">forget password ?</string>
     <string name="forget_account_number">forget account number ?</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forget_pin">Forget PIN?</string>
+    <string name="dont_have_account">Don\'t Have a Account? Open Now</string>
+    <string name="hi_user">Hi User</string>
 </resources>
