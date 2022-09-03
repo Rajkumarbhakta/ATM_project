@@ -9,6 +9,7 @@ public class registerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setTitle("Sign Up");
         setContentView(R.layout.activity_register);
     }
 }

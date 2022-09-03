@@ -9,16 +9,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="50dp"
-        android:gravity="center">
+        android:layout_margin="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hi_user"
             android:gravity="center"
-            android:textSize="30sp"
-            />
+            android:text="@string/hi_user"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,62 +33,62 @@
 
                 <Button
                     android:id="@+id/btnCheckBalance"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:text="Check Balance" />
 
                 <Button
-                    android:id="@+id/btnDiposit"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnStatement"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="5dp"
-                    android:padding="8dp"
-                    android:text="Diposit" />
+                    android:padding="5dp"
+                    android:text="Mini Statement" />
 
                 <Button
-                    android:id="@+id/btnStatement"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnChangePin"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="5dp"
-                    android:padding="8dp"
-                    android:text="Mini Statement" />
+                    android:padding="5dp"
+                    android:text="Change PIN" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="right"
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnWithdrawl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="45dp"
-                    android:padding="8dp"
-                    android:text="Withdrawl" />
-
-                <Button
                     android:id="@+id/btnFastCash"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45dp"
-                    android:layout_marginTop="20dp"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:text="Fast Cash" />
 
                 <Button
-                    android:id="@+id/btnChangePin"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnDiposit"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="45dp"
                     android:layout_marginTop="20dp"
-                    android:padding="8dp"
-                    android:text="Change PIN" />
+                    android:padding="5dp"
+                    android:text="Diposit" />
+
+                <Button
+                    android:id="@+id/btnWithdrawl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="5dp"
+                    android:text="Withdrawl" />
+
             </LinearLayout>
         </LinearLayout>
 

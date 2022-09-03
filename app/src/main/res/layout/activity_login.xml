@@ -21,11 +21,12 @@
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/welcome"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/welcome" />
 
 
         <EditText
@@ -35,14 +36,14 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints="Account Number"
             android:background="@drawable/edit_text_col"
             android:drawableLeft="@drawable/ic_baseline_account_circle_24"
             android:drawablePadding="7dp"
             android:hint="@string/account_number"
             android:inputType="number"
             android:padding="10dp"
-            android:textColorHint="@color/black"
-            android:autofillHints="Account Number">
+            android:textColorHint="@color/black">
 
         </EditText>
 
@@ -54,11 +55,11 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/edit_text_col"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="7dp"
             android:hint="@string/pin"
             android:inputType="numberPassword"
             android:padding="10dp"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="7dp"
             android:textColorHint="@color/black">
 
         </EditText>
@@ -76,22 +77,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            >
-            <TextView
-                android:id="@+id/sign_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dont_have_account"
-                android:layout_marginEnd="20dp"
-                />
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/forget_pin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/forget_pin"
-                />
+                android:layout_gravity="center"
+                android:text="@string/forget_pin" />
+
+            <TextView
+                android:id="@+id/sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/dont_have_account" />
         </LinearLayout>
 
     </LinearLayout>
