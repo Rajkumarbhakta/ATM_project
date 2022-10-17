@@ -3,20 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="5dp"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarLogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#BFFFFFFF">
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_below="@+id/appbarlayout"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
@@ -38,7 +44,7 @@
             android:layout_marginEnd="10dp"
             android:autofillHints="Account Number"
             android:background="@drawable/edit_text_col"
-            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+            android:drawableStart="@drawable/ic_baseline_account_circle_24"
             android:drawablePadding="7dp"
             android:hint="@string/account_number"
             android:inputType="number"
@@ -55,7 +61,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/edit_text_col"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="7dp"
             android:hint="@string/pin"
             android:inputType="numberPassword"
@@ -63,6 +69,16 @@
             android:textColorHint="@color/black">
 
         </EditText>
+
+        <TextView
+            android:id="@+id/forget_pin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="10dp"
+            android:text="@string/forget_pin"
+            android:textColor="@color/purple_700"
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/login"
@@ -74,27 +90,12 @@
 
         </Button>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/sign_up"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/forget_pin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/forget_pin" />
-
-            <TextView
-                android:id="@+id/sign_up"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="@string/dont_have_account" />
-        </LinearLayout>
-
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/dont_have_account" />
     </LinearLayout>
 </RelativeLayout>

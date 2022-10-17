@@ -3,7 +3,9 @@ package com.rkbapps.atm;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,10 +21,14 @@ public class loginActivity extends AppCompatActivity {
     TextView openAccount,forgetPassword;
     Button submit;
     String accNum,pinNum;
+    Toolbar toolbarLogin;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        toolbarLogin=findViewById(R.id.toolbarLogin);
+        setSupportActionBar(toolbarLogin);
         getSupportActionBar().setTitle("Sign in");
         accountNumber = findViewById(R.id.account_number);
         forgetPassword=findViewById(R.id.forget_pin);
