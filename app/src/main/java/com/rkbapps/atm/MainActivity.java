@@ -14,7 +14,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 Toolbar toolbar;
-Button checkBalance;
+Button checkBalance,btnWithdrawal;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,18 @@ Button checkBalance;
 
         toolbar=findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
+        btnWithdrawal=findViewById(R.id.btnWithdrawl);
+
         getSupportActionBar().setTitle("ATM");
-        checkBalance.findViewById(R.id.btnCheckBalance);
+        checkBalance=findViewById(R.id.btnCheckBalance);
+        btnWithdrawal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent withDrawl=new Intent(MainActivity.this,WithDrawalPage.class);
+                startActivity(withDrawl);
+                finish();
+            }
+        });
        /* checkBalance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,5 +56,30 @@ Button checkBalance;
         });*/
 
      //04063
+    }
+    public void onBackPressed(){
+        AlertDialog.Builder build= new AlertDialog.Builder(MainActivity.this);
+        build.setMessage("Do you want to exit ?");
+
+        build.setTitle("Alert !");
+
+        build.setCancelable(false);
+
+        build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, "Yes clicked", Toast.LENGTH_SHORT).show();
+                Intent noBtn=new Intent(MainActivity.this, loginActivity.class);
+                startActivity(noBtn);
+                finish();
+            }
+        });
+        build.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        });
+        AlertDialog alertDialog = build.create();
+        alertDialog.show();
+
+
     }
 }
