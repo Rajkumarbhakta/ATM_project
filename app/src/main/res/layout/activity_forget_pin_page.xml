@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForgetPinPage"
+    android:orientation="vertical"
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarlayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="5dp"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarForgetPin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please provide details for reset of the new PIN for your account"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        />
+
+    <EditText
+        android:id="@+id/txtEnterYourName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:background="@drawable/edit_text_col"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        />
+    <EditText
+        android:id="@+id/txtForgetPinEnterAccountNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Account Number"
+        android:background="@drawable/edit_text_col"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+
+        <EditText
+            android:id="@+id/txtEnterOtp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter OTP"
+            android:background="@drawable/edit_text_col"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtGenarateOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/txtEnterOtp"
+            android:text="Genarate OTP"
+            android:textSize="14dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="4dp"
+            android:textColor="#5566C4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnResetPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset PIN"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        />
+
+</LinearLayout>

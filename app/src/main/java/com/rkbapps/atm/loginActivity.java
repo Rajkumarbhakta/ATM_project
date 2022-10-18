@@ -57,7 +57,13 @@ public class loginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(loginActivity.this,ForgetPinPage.class);
+                startActivity(i);
+            }
+        });
 
     }
 }

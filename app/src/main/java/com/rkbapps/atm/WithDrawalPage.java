@@ -22,14 +22,17 @@ public class WithDrawalPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_with_drawal_page);
         withDraw=findViewById(R.id.withdrawBtn);
-        moneyAmount=findViewById(R.id.editTextNumber);
+        moneyAmount=findViewById(R.id.txtWidthdrawlAmount);
 
 
         withDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int amount=Integer.parseInt(moneyAmount.getText().toString());
-                if (amount % 100 != 0) {
+                if(moneyAmount.getText().toString().equals("0")){
+                    Toast.makeText(WithDrawalPage.this, "Please Enter an amount in Multiple of 100/-", Toast.LENGTH_SHORT).show();
+                }
+                else if (amount % 100 != 0) {
                     AlertDialog.Builder moneyAlert = new AlertDialog.Builder(WithDrawalPage.this);
                     moneyAlert.setTitle("Sorry,Invalid Money Format.");
                     moneyAlert.setMessage("Please,Enter amount in multiple of 100/-");
