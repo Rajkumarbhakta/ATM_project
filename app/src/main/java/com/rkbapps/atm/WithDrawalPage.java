@@ -31,8 +31,8 @@ public class WithDrawalPage extends AppCompatActivity {
                 int amount=Integer.parseInt(moneyAmount.getText().toString());
                 if (amount % 100 != 0) {
                     AlertDialog.Builder moneyAlert = new AlertDialog.Builder(WithDrawalPage.this);
-                    moneyAlert.setTitle("Sorry,Invalid Input Money Format.");
-                    moneyAlert.setMessage("Please,Enter amount in multiple of 10");
+                    moneyAlert.setTitle("Sorry,Invalid Money Format.");
+                    moneyAlert.setMessage("Please,Enter amount in multiple of 100/-");
                     moneyAlert.setPositiveButton("Ok", null);
                     AlertDialog t = moneyAlert.create();
                     t.show();
