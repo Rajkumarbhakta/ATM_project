@@ -1,5 +1,6 @@
 package com.rkbapps.atm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,13 +11,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class MainActivity extends AppCompatActivity {
+//DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
 Toolbar toolbar;
 Button checkBalance,btnWithdrawal,btnChangePin;
-
-    @SuppressLint("MissingInflatedId")
+TextView greetings;
+String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +37,18 @@ Button checkBalance,btnWithdrawal,btnChangePin;
         btnWithdrawal=findViewById(R.id.btnWithdrawl);
         checkBalance=findViewById(R.id.btnCheckBalance);
         btnChangePin=findViewById(R.id.btnChangePin);
+        greetings=findViewById(R.id.txtGreetings);
+        //getting details from login activity
+        Intent getDetails = getIntent();
+        recAccountNum=getDetails.getStringExtra("accountNum");
+        recFirstName=getDetails.getStringExtra("firstName");
+        recLastName=getDetails.getStringExtra("lastName");
+        recMobileNumber=getDetails.getStringExtra("mobileNumber");
+        recBalance=getDetails.getStringExtra("balance");
+
+        greetings.setText("Hi "+recFirstName);
+
+
         btnWithdrawal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +69,7 @@ Button checkBalance,btnWithdrawal,btnChangePin;
             public void onClick(View view) {
                 AlertDialog.Builder checkBalanceAlart=new AlertDialog.Builder(MainActivity.this);
                 checkBalanceAlart.setIcon(R.drawable.ic_baseline_account_balance_wallet_24).setTitle("Balance");
-                checkBalanceAlart.setMessage("Balance in your account ₹"+"0.00");
+                checkBalanceAlart.setMessage("Balance in your account ₹"+recBalance);
                 checkBalanceAlart.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

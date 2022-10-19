@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "36777952904",
+    "project_id": "atm-project-1dbee",
+    "storage_bucket": "atm-project-1dbee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36777952904:android:6b299a29a75a711f77c13d",
+        "android_client_info": {
+          "package_name": "com.rkbapps.atm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36777952904-qqf5h3o1k58te0sk64h44061av0smq5t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA66h6etOFNNmbXerqfVYrsi7wC97xO6G0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36777952904-qqf5h3o1k58te0sk64h44061av0smq5t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
