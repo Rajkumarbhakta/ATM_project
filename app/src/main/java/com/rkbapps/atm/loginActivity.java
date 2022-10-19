@@ -17,8 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.appcheck.FirebaseAppCheck;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -74,7 +72,6 @@ public class loginActivity extends AppCompatActivity {
                                 inextMain.putExtra("mobileNumber",getMobileNumber);
                                 inextMain.putExtra("balance",getBalance);
                                 startActivity(inextMain);
-                                finish();
                             }else {
                                 Toast.makeText(loginActivity.this, "Wrong Account number or PIN", Toast.LENGTH_SHORT).show();
                             }
@@ -110,7 +107,6 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i =new Intent(loginActivity.this,registerActivity.class);
                 startActivity(i);
-                finish();
             }
         });
         forgetPassword.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +114,6 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(loginActivity.this,ForgetPinPage.class);
                 startActivity(i);
-                finish();
             }
         });
 
