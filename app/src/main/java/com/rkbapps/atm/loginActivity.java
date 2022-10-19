@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class loginActivity extends AppCompatActivity {
     EditText accountNumber,pin;
     TextView openAccount,forgetPassword;
     Button submit;
+    ProgressBar loginProgress;
     String accNum,pinNum;
 
     @SuppressLint("MissingInflatedId")
@@ -46,17 +48,20 @@ public class loginActivity extends AppCompatActivity {
         pin=findViewById(R.id.pin);
         openAccount=findViewById(R.id.sign_up);
         submit = findViewById(R.id.login);
-
+        loginProgress=findViewById(R.id.loginProgressBar);
+        loginProgress.setVisibility(View.INVISIBLE);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loginProgress.setVisibility(View.VISIBLE);
                 accNum=accountNumber.getText().toString();
                 pinNum=pin.getText().toString();
                 databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //check if number is exist
                         if(snapshot.hasChild(accNum)){
-                            //check if number is exist
+                            //fetching data
                             String getPin=snapshot.child(accNum).child("pin").getValue(String.class);
                             String getFirstName=snapshot.child(accNum).child("firstName").getValue(String.class);
                             String getLastName=snapshot.child(accNum).child("lastName").getValue(String.class);
@@ -72,10 +77,15 @@ public class loginActivity extends AppCompatActivity {
                                 inextMain.putExtra("mobileNumber",getMobileNumber);
                                 inextMain.putExtra("balance",getBalance);
                                 startActivity(inextMain);
+                                loginProgress.setVisibility(View.INVISIBLE);
                             }else {
                                 Toast.makeText(loginActivity.this, "Wrong Account number or PIN", Toast.LENGTH_SHORT).show();
+                                loginProgress.setVisibility(View.INVISIBLE);
                             }
-                        }else{
+                        }else if(pinNum.isEmpty()){
+                            Toast.makeText(loginActivity.this, "Please Enter PIN", Toast.LENGTH_SHORT).show();
+                            loginProgress.setVisibility(View.INVISIBLE);
+                        } else {
                             AlertDialog.Builder donthaveAccountAlert=new AlertDialog.Builder(loginActivity.this);
                             donthaveAccountAlert.setIcon(R.drawable.ic_baseline_cancel_24).setTitle("Don't Have a account?");
                             donthaveAccountAlert.setMessage("Try to open a Free Bank Account");
@@ -87,6 +97,7 @@ public class loginActivity extends AppCompatActivity {
                                     finish();
                                 }
                             });
+                            loginProgress.setVisibility(View.INVISIBLE);
                             donthaveAccountAlert.show();
                         }
                     }
@@ -107,12 +118,15 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i =new Intent(loginActivity.this,registerActivity.class);
                 startActivity(i);
+                finish();
             }
         });
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(loginActivity.this,ForgetPinPage.class);
+                accountNumber.setText("");
+                pin.setText("");
                 startActivity(i);
             }
         });

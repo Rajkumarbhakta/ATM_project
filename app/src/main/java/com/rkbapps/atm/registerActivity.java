@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Guideline;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,46 +30,65 @@ import java.util.ArrayList;
 
 public class registerActivity extends AppCompatActivity {
 DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
-
+ProgressBar loadingRegister;
+Spinner listGender;
 TextView alreadyHaveAccount;
 EditText txtFirstName,txtLastName,txtMobileNumber,txtEmail,txtPin,txtConfirmPin;
 Button btnRegister;
 String firstName,lastName,mobileNumber,email,pin,confirmPin,Gender;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //spiner data set up
+        listGender=findViewById(R.id.listGender);
+        ArrayList<String> gender=new ArrayList<>();
+        gender.add("Select Gender");
+        gender.add("Male");
+        gender.add("Female");
+        gender.add("Other");
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,gender);
+        listGender.setAdapter(genderAdapter);
+        //finding ids for views
         txtFirstName=findViewById(R.id.textFirstName);
         txtLastName=findViewById(R.id.txtLastName);
         txtMobileNumber=findViewById(R.id.txtMobileNumber);
         txtEmail=findViewById(R.id.txtEmailId);
         txtPin=findViewById(R.id.txtCreatePassword);
         txtConfirmPin=findViewById(R.id.txtConfirmPassword);
+        loadingRegister=findViewById(R.id.registerProgressBar);
         btnRegister=findViewById(R.id.buttonSubmit);
         alreadyHaveAccount=findViewById(R.id.txtAlreadyHaveAccount);
-
+        loadingRegister.setVisibility(View.INVISIBLE);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firstName=txtFirstName.getText().toString();
                 lastName=txtLastName.getText().toString();
                 email=txtEmail.getText().toString();
+                Gender=listGender.getSelectedItem().toString();
                 mobileNumber=txtMobileNumber.getText().toString();
                 pin=txtPin.getText().toString();
                confirmPin=txtConfirmPin.getText().toString();
+               loadingRegister.setVisibility(View.VISIBLE);
+                //Toast.makeText(registerActivity.this, ""+gender, Toast.LENGTH_SHORT).show();
                databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                        if(snapshot.hasChild(mobileNumber)){
                            Toast.makeText(registerActivity.this, "Already Have account with this Mobile Number", Toast.LENGTH_SHORT).show();
+                           loadingRegister.setVisibility(View.INVISIBLE);
                        }
                        else {
                            if(mobileNumber.length() != 10 || pin.length()!=4 || !pin.equals(confirmPin)){
                                Toast.makeText(registerActivity.this, "Please Recheck details and enter correctly", Toast.LENGTH_SHORT).show();
+                               loadingRegister.setVisibility(View.INVISIBLE);
                            }else {
                                databaseReference.child("user").child(mobileNumber).child("firstName").setValue(firstName);
                                databaseReference.child("user").child(mobileNumber).child("lastName").setValue(lastName);
                                databaseReference.child("user").child(mobileNumber).child("mobile-number").setValue(mobileNumber);
+                               databaseReference.child("user").child(mobileNumber).child("gender").setValue(Gender);
                                databaseReference.child("user").child(mobileNumber).child("email").setValue(email);
                                databaseReference.child("user").child(mobileNumber).child("pin").setValue(confirmPin);
                                databaseReference.child("user").child(mobileNumber).child("balance").setValue("0");
@@ -83,6 +104,7 @@ String firstName,lastName,mobileNumber,email,pin,confirmPin,Gender;
                                    }
                                });
                                registationAlert.setCancelable(false);
+                               loadingRegister.setVisibility(View.INVISIBLE);
                                registationAlert.show();
                            }
                        }
