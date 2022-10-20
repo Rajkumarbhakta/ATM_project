@@ -22,17 +22,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Deposit extends AppCompatActivity {
-    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl
+            ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
    EditText txtEnterAmount;
    Button btnProceed;
    ProgressBar loaddingDiposit;
-   TextView presentBalance;
+   TextView presentBalance,btn500,btn1000,btn2000,btn5000;
     String accNumInDiposit,enterAmount,totalAmountF,previousBalance;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit);
+        btn500=findViewById(R.id.btn500);
+        btn1000=findViewById(R.id.btn1000);
+        btn2000=findViewById(R.id.btn2000);
+        btn5000=findViewById(R.id.btn5000);
+
         txtEnterAmount=findViewById(R.id.txtEnterAmount);
         btnProceed=findViewById(R.id.btnProceed);
         presentBalance=findViewById(R.id.txtCurrentAccountBalance);
@@ -56,7 +62,30 @@ public class Deposit extends AppCompatActivity {
 
             }
         });
-
+        btn500.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               txtEnterAmount.setText("500");
+            }
+        });
+        btn1000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtEnterAmount.setText("1000");
+            }
+        });
+        btn2000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtEnterAmount.setText("2000");
+            }
+        });
+        btn5000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtEnterAmount.setText("5000");
+            }
+        });
 
         btnProceed.setOnClickListener(new View.OnClickListener() {
             @Override

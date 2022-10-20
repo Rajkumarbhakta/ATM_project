@@ -40,12 +40,12 @@
             android:orientation="vertical"
             android:background="@drawable/ic_baseline_currency_rupee_24"
             >
+
             <ProgressBar
                 android:id="@+id/dipositPageProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                />
+                android:layout_centerInParent="true" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,6 +81,7 @@
                     android:layout_below="@id/txtEnterAmount"
                     >
                     <TextView
+                        android:id="@+id/btn500"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="500"
@@ -90,6 +91,7 @@
                         android:textColor="@color/purple_700"
                         />
                     <TextView
+                        android:id="@+id/btn1000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1000"
@@ -100,6 +102,7 @@
                         android:textColor="@color/purple_700"
                         />
                     <TextView
+                        android:id="@+id/btn2000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2000"
@@ -110,6 +113,7 @@
                         android:textColor="@color/purple_700"
                         />
                     <TextView
+                        android:id="@+id/btn5000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5000"

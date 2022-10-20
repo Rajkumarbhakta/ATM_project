@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@color/white"
+    tools:context=".FundTransfer">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="6dp"
+        android:background="#F2E8DFDF">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Send Money"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+
+
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/receiverAcc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:inputType="number"
+            android:textColorHint="@color/gray"
+            android:textColor="#D8000000"
+            android:hint="Enter Receiver Account No"
+            android:textSize="23sp"
+            android:background="@drawable/recomand_amount_background"/>
+        <EditText
+            android:id="@+id/receiverName"
+            android:layout_marginTop="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColorHint="@color/gray"
+            android:textColor="#D8000000"
+            android:hint="Enter Receiver Full Name"
+            android:textSize="23sp"
+            android:background="@drawable/recomand_amount_background"/>
+        <EditText
+            android:id="@+id/quantity"
+            android:layout_marginTop="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColorHint="@color/gray"
+            android:textColor="#D8000000"
+            android:hint="Enter the amount"
+            android:textSize="23sp"
+            android:background="@drawable/recomand_amount_background"/>
+
+
+
+
+
+    </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="59dp"
+            android:layout_above="@+id/btnSend"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="81dp"
+            android:layout_marginEnd="234dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/card" />
+
+        <TextView
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnSend"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="175dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="30dp"
+
+            android:text="BGPRAS Bank" />
+
+        <Button
+        android:id="@+id/btnSend"
+        android:layout_marginBottom="22dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Send"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

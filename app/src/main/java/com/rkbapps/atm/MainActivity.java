@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 //DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
 Toolbar toolbar;
-Button checkBalance,btnWithdrawal,btnChangePin,btnDeposit;
+Button checkBalance,btnWithdrawal,btnChangePin,btnDeposit,btnTransfer;
 TextView greetings;
 String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -54,6 +55,7 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
             @Override
             public void onClick(View view) {
                 Intent withDrawl=new Intent(MainActivity.this,WithDrawalPage.class);
+                withDrawl.putExtra("account no for credit",recAccountNum);
                 startActivity(withDrawl);
                 finish();
             }
@@ -85,6 +87,15 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
            public void onClick(View view) {
                Intent i=new Intent(MainActivity.this,Deposit.class);
                i.putExtra("accountNumberToDiposit",recAccountNum);
+               startActivity(i);
+               finish();
+           }
+       });
+       btnTransfer=findViewById(R.id.btnStatement);
+       btnTransfer.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent i=new Intent(MainActivity.this,FundTransfer.class);
                startActivity(i);
                finish();
            }
