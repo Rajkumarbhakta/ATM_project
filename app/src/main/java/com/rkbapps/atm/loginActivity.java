@@ -77,6 +77,7 @@ public class loginActivity extends AppCompatActivity {
                                 inextMain.putExtra("mobileNumber",getMobileNumber);
                                 inextMain.putExtra("balance",getBalance);
                                 startActivity(inextMain);
+                                finish();
                                 loginProgress.setVisibility(View.INVISIBLE);
                             }else {
                                 Toast.makeText(loginActivity.this, "Wrong Account number or PIN", Toast.LENGTH_SHORT).show();
