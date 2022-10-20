@@ -75,7 +75,7 @@ public class loginActivity extends AppCompatActivity {
                                 inextMain.putExtra("firstName",getFirstName);
                                 inextMain.putExtra("lastName",getLastName);
                                 inextMain.putExtra("mobileNumber",getMobileNumber);
-                                inextMain.putExtra("balance ",getBalance);
+                                inextMain.putExtra("balance",getBalance);
                                 startActivity(inextMain);
                                 finish();
                                 loginProgress.setVisibility(View.INVISIBLE);

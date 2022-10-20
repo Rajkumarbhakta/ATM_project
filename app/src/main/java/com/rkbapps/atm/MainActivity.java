@@ -84,7 +84,9 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
            @Override
            public void onClick(View view) {
                Intent i=new Intent(MainActivity.this,Deposit.class);
+               i.putExtra("accountNumberToDiposit",recAccountNum);
                startActivity(i);
+               finish();
            }
        });
 
