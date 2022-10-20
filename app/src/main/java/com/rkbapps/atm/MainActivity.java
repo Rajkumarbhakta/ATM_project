@@ -105,6 +105,7 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(MainActivity.this,FastCashPage.class);
+                i.putExtra("FastCashAccount",recAccountNum);
                 startActivity(i);
                 finish();
             }
