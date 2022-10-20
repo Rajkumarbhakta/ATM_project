@@ -37,8 +37,7 @@ public class FundTransfer extends AppCompatActivity {
         build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(FundTransfer.this, "Yes clicked", Toast.LENGTH_SHORT).show();
-                Intent noBtn=new Intent(FundTransfer.this, MainActivity.class);
+                Intent noBtn=new Intent(FundTransfer.this,loginActivity.class);
                 startActivity(noBtn);
                 finish();
             }

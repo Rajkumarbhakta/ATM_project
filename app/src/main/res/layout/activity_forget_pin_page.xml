@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:gbp="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ForgetPinPage"
@@ -29,14 +30,19 @@
         android:text="Please provide details for reset of the new PIN for your account"
         android:textSize="20sp"
         android:layout_margin="10dp"
+        android:textColor="@color/black"
         />
     <EditText
         android:id="@+id/txtEnterYourEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your Email Id"
+        android:hint="Enter your Email ID"
         android:background="@drawable/edit_text_col"
         android:inputType="textEmailAddress"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawablePadding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintColour"
         android:padding="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
@@ -49,6 +55,10 @@
         android:layout_height="wrap_content"
         android:hint="Enter your Account Number"
         android:inputType="phone"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+        android:drawablePadding="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hintColour"
         android:background="@drawable/edit_text_col"
         android:padding="10dp"
         android:layout_margin="10dp"
@@ -60,14 +70,6 @@
         android:layout_marginTop="10dp"
         >
 
-        <ProgressBar
-            android:id="@+id/forgetPinProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
         <EditText
             android:id="@+id/txtEnterOtp"
             android:layout_width="0dp"
@@ -75,6 +77,10 @@
             android:hint="Enter OTP"
             android:background="@drawable/edit_text_col"
             android:inputType="number"
+            android:textColor="@color/black"
+            android:textColorHint="@color/hintColour"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="5dp"
             android:padding="10dp"
             android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -104,6 +110,16 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.7" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+        android:id="@+id/forgetPinProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        gbp:type="chrome_floating_circles" />
+
     <TextView
         android:id="@+id/txtOtpStatus"
         android:layout_width="match_parent"
@@ -115,13 +131,18 @@
         android:textStyle="bold"
         android:gravity="center"
         />
+    </RelativeLayout>
     <Button
         android:id="@+id/btnResetPin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Reset PIN"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_background"
         />
 
 </LinearLayout>
