@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="40dp"
-
     android:background="@color/white"
-
     tools:context=".Deposit">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
         >
 
     <TextView
@@ -35,18 +33,22 @@
         android:textSize="23sp"
         android:textAlignment="center"
         />
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="26dp"
+            android:orientation="vertical"
             android:background="@drawable/ic_baseline_currency_rupee_24"
-
-            tools:ignore="Orientation">
+            >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:background="#2196F3"
+                >
                 <TextView
+                    android:id="@+id/txtDipositAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Amount"
@@ -54,75 +56,73 @@
                     android:textSize="17sp"
                     />
                 <EditText
+                    android:id="@+id/txtEnterAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="₹0"
                     android:textColor="@color/black"
                     android:textSize="25sp"
-
+                    android:layout_below="@id/txtDipositAmount"
                     />
                 <LinearLayout
+                    android:id="@+id/recomend"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="11dp"
+                    android:gravity="center"
+                    android:layout_below="@id/txtEnterAmount"
                     >
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
-
                         android:text="₹500"
+                        android:padding="10dp"
                         android:textSize="20sp"
+                        android:background="@drawable/recomand_amount_background"
                         android:textColor="@color/purple_700"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
                         android:text="₹1000"
+                        android:layout_margin="2.5dp"
+                        android:padding="10dp"
                         android:textSize="20sp"
+                        android:background="@drawable/recomand_amount_background"
                         android:textColor="@color/purple_700"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
                         android:text="₹2000"
+                        android:layout_margin="2.5dp"
+                        android:padding="10dp"
                         android:textSize="20sp"
+                        android:background="@drawable/recomand_amount_background"
                         android:textColor="@color/purple_700"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
                         android:text="₹5000"
+                        android:padding="10dp"
                         android:textSize="20sp"
+                        android:background="@drawable/recomand_amount_background"
                         android:textColor="@color/purple_700"
                         />
 
                 </LinearLayout>
-
+            </LinearLayout>
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="320dp"
-                    android:padding="8dp"
+                    android:layout_alignParentBottom="true"
                     android:text="Proceed"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>
