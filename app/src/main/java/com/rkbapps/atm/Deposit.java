@@ -33,7 +33,6 @@ public class Deposit extends AppCompatActivity {
         btnProceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 accNum=accountNumber.toString();
                 enterAmount =txtEnterAmount.getText().toString();
                 databaseReference.child("accNum").addListenerForSingleValueEvent(new ValueEventListener() {
