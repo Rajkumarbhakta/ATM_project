@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/hi_user"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,6 +54,8 @@
                 android:padding="10dp"
                 android:layout_marginEnd="5dp"
                 android:text="Check Balance"
+                android:background="@drawable/btn_background"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -66,6 +69,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
                 android:text="Fund Transfer"
+                android:background="@drawable/btn_background"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnCheckBalance" />
@@ -78,6 +83,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
                 android:text="Change PIN"
+                android:background="@drawable/btn_background"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnStatement" />
@@ -90,6 +97,8 @@
                 android:padding="10dp"
                 android:layout_marginStart="10dp"
                 android:text="Fast Cash"
+                android:background="@drawable/btn_background"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnCheckBalance"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -102,6 +111,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:text="Deposit"
+                android:background="@drawable/btn_background"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnStatement"
                 app:layout_constraintTop_toBottomOf="@+id/btnFastCash" />
@@ -114,6 +125,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:text="Withdrawl"
+                android:background="@drawable/btn_background"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnChangePin"
                 app:layout_constraintTop_toBottomOf="@+id/btnDeposit" />

@@ -125,7 +125,6 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
         build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(MainActivity.this, "Yes clicked", Toast.LENGTH_SHORT).show();
                 Intent noBtn=new Intent(MainActivity.this, loginActivity.class);
                 startActivity(noBtn);
                 finish();

@@ -91,36 +91,41 @@ public class Deposit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loaddingDiposit.setVisibility(View.VISIBLE);
-                enterAmount =txtEnterAmount.getText().toString();
-                int previousAmount=Integer.parseInt(previousBalance);
-                int depAmount=Integer.parseInt(enterAmount);
-                int totalAmount=previousAmount+depAmount;
-                totalAmountF=Integer.toString(totalAmount);
+                enterAmount = txtEnterAmount.getText().toString();
+                if (enterAmount.isEmpty()) {
+                    Toast.makeText(Deposit.this, "Please enter a amount", Toast.LENGTH_SHORT).show();
+                    loaddingDiposit.setVisibility(View.INVISIBLE);
+                } else{
+                    int previousAmount = Integer.parseInt(previousBalance);
+                int depAmount = Integer.parseInt(enterAmount);
+                int totalAmount = previousAmount + depAmount;
+                totalAmountF = Integer.toString(totalAmount);
                 //new balance update in database
                 databaseReference.child("user").child(accNumInDiposit).child("balance").setValue(totalAmountF);
                 loaddingDiposit.setVisibility(View.INVISIBLE);
                 //Toast.makeText(Deposit.this, "Balance deposit successfully.", Toast.LENGTH_SHORT).show();
-                AlertDialog.Builder dipositStatusDialog=new AlertDialog.Builder(Deposit.this);
+                AlertDialog.Builder dipositStatusDialog = new AlertDialog.Builder(Deposit.this);
                 dipositStatusDialog.setIcon(R.drawable.ic_baseline_done_24);
-                dipositStatusDialog.setTitle("Deposit Amount Successfully").setMessage("₹"+enterAmount+" deposit in your account Successfully and the Account balance is ₹"+totalAmountF);
+                dipositStatusDialog.setTitle("Deposit Amount Successfully").setMessage("₹" + enterAmount + " deposit in your account Successfully and the Account balance is ₹" + totalAmountF);
                 dipositStatusDialog.setPositiveButton("Deposit More", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         txtEnterAmount.setText("");
-                        presentBalance.setText("A/C bal:  ₹"+totalAmountF);
+                        presentBalance.setText("A/C bal:  ₹" + totalAmountF);
                     }
                 });
                 dipositStatusDialog.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent=new Intent(Deposit.this,loginActivity.class);
+                        Intent intent = new Intent(Deposit.this, loginActivity.class);
                         startActivity(intent);
                         finish();
                     }
                 });
                 dipositStatusDialog.setCancelable(false);
-               dipositStatusDialog.show();
+                dipositStatusDialog.show();
             }
+        }
         });
     }
 
@@ -128,15 +133,11 @@ public class Deposit extends AppCompatActivity {
     public void onBackPressed(){
         AlertDialog.Builder build= new AlertDialog.Builder(Deposit.this);
         build.setMessage("Do you want to exit ?");
-
         build.setTitle("Alert !");
-
         build.setCancelable(false);
-
         build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(Deposit.this, "Yes clicked", Toast.LENGTH_SHORT).show();
                 Intent noBtn=new Intent(Deposit.this, loginActivity.class);
                 startActivity(noBtn);
                 finish();

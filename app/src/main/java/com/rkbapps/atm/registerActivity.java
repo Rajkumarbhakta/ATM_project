@@ -61,59 +61,67 @@ String firstName,lastName,mobileNumber,email,pin,confirmPin,Gender;
         btnRegister=findViewById(R.id.buttonSubmit);
         alreadyHaveAccount=findViewById(R.id.txtAlreadyHaveAccount);
         loadingRegister.setVisibility(View.INVISIBLE);
+
+
+
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firstName=txtFirstName.getText().toString();
-                lastName=txtLastName.getText().toString();
-                email=txtEmail.getText().toString();
-                Gender=listGender.getSelectedItem().toString();
-                mobileNumber=txtMobileNumber.getText().toString();
-                pin=txtPin.getText().toString();
-               confirmPin=txtConfirmPin.getText().toString();
-               loadingRegister.setVisibility(View.VISIBLE);
-                //Toast.makeText(registerActivity.this, ""+gender, Toast.LENGTH_SHORT).show();
-               databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
-                   @Override
-                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-                       if(snapshot.hasChild(mobileNumber)){
-                           Toast.makeText(registerActivity.this, "Already Have account with this Mobile Number", Toast.LENGTH_SHORT).show();
-                           loadingRegister.setVisibility(View.INVISIBLE);
-                       }
-                       else {
-                           if(mobileNumber.length() != 10 || pin.length()!=4 || !pin.equals(confirmPin)){
-                               Toast.makeText(registerActivity.this, "Please Recheck details and enter correctly", Toast.LENGTH_SHORT).show();
-                               loadingRegister.setVisibility(View.INVISIBLE);
-                           }else {
-                               databaseReference.child("user").child(mobileNumber).child("firstName").setValue(firstName);
-                               databaseReference.child("user").child(mobileNumber).child("lastName").setValue(lastName);
-                               databaseReference.child("user").child(mobileNumber).child("mobile-number").setValue(mobileNumber);
-                               databaseReference.child("user").child(mobileNumber).child("gender").setValue(Gender);
-                               databaseReference.child("user").child(mobileNumber).child("email").setValue(email);
-                               databaseReference.child("user").child(mobileNumber).child("pin").setValue(confirmPin);
-                               databaseReference.child("user").child(mobileNumber).child("balance").setValue("0");
-                               AlertDialog.Builder registationAlert=new AlertDialog.Builder(registerActivity.this);
-                               registationAlert.setIcon(R.drawable.ic_baseline_done_24).setTitle("Your Account is Ready");
-                               registationAlert.setMessage("Your Account Number is "+mobileNumber);
-                               registationAlert.setPositiveButton("Log in Now", new DialogInterface.OnClickListener() {
-                                   @Override
-                                   public void onClick(DialogInterface dialogInterface, int i) {
-                                       Intent Inextlogin=new Intent(registerActivity.this,loginActivity.class);
-                                       startActivity(Inextlogin);
-                                       finish();
-                                   }
-                               });
-                               registationAlert.setCancelable(false);
-                               loadingRegister.setVisibility(View.INVISIBLE);
-                               registationAlert.show();
-                           }
-                       }
-                   }
-                   @Override
-                   public void onCancelled(@NonNull DatabaseError error) {
+                firstName = txtFirstName.getText().toString();
+                lastName = txtLastName.getText().toString();
+                email = txtEmail.getText().toString();
+                Gender = listGender.getSelectedItem().toString();
+                mobileNumber = txtMobileNumber.getText().toString();
+                pin = txtPin.getText().toString();
+                confirmPin = txtConfirmPin.getText().toString();
+                loadingRegister.setVisibility(View.VISIBLE);
+                if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || mobileNumber.isEmpty() || pin.isEmpty() || confirmPin.isEmpty()) {
+                    Toast.makeText(registerActivity.this, "Please give us the proper details", Toast.LENGTH_SHORT).show();
+                    loadingRegister.setVisibility(View.INVISIBLE);
+                } else{
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(mobileNumber)) {
+                                Toast.makeText(registerActivity.this, "Already Have account with this Mobile Number", Toast.LENGTH_SHORT).show();
+                                loadingRegister.setVisibility(View.INVISIBLE);
+                            } else {
+                                if (mobileNumber.length() != 10 || pin.length() != 4 || !pin.equals(confirmPin)) {
+                                    Toast.makeText(registerActivity.this, "Please Recheck details and enter correctly", Toast.LENGTH_SHORT).show();
+                                    loadingRegister.setVisibility(View.INVISIBLE);
+                                } else {
+                                    databaseReference.child("user").child(mobileNumber).child("firstName").setValue(firstName);
+                                    databaseReference.child("user").child(mobileNumber).child("lastName").setValue(lastName);
+                                    databaseReference.child("user").child(mobileNumber).child("mobile-number").setValue(mobileNumber);
+                                    databaseReference.child("user").child(mobileNumber).child("gender").setValue(Gender);
+                                    databaseReference.child("user").child(mobileNumber).child("email").setValue(email);
+                                    databaseReference.child("user").child(mobileNumber).child("pin").setValue(confirmPin);
+                                    databaseReference.child("user").child(mobileNumber).child("balance").setValue("0");
+                                    AlertDialog.Builder registationAlert = new AlertDialog.Builder(registerActivity.this);
+                                    registationAlert.setIcon(R.drawable.ic_baseline_done_24).setTitle("Your Account is Ready");
+                                    registationAlert.setMessage("Your Account Number is " + mobileNumber);
+                                    registationAlert.setPositiveButton("Log in Now", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent Inextlogin = new Intent(registerActivity.this, loginActivity.class);
+                                            startActivity(Inextlogin);
+                                            finish();
+                                        }
+                                    });
+                                    registationAlert.setCancelable(false);
+                                    loadingRegister.setVisibility(View.INVISIBLE);
+                                    registationAlert.show();
+                                }
+                            }
+                        }
 
-                   }
-               });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
             }
         });
 
@@ -129,15 +137,11 @@ String firstName,lastName,mobileNumber,email,pin,confirmPin,Gender;
     public void onBackPressed(){
         AlertDialog.Builder build= new AlertDialog.Builder(registerActivity.this);
         build.setMessage("Do you want to exit ?");
-
         build.setTitle("Alert !");
-
         build.setCancelable(false);
-
         build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(registerActivity.this, "Yes clicked", Toast.LENGTH_SHORT).show();
                 Intent noBtn=new Intent(registerActivity.this, loginActivity.class);
                 startActivity(noBtn);
                 finish();

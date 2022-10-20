@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    xmlns:gbp="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
@@ -21,12 +21,14 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-<ProgressBar
-    android:id="@+id/loginProgressBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    />
+
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+        android:id="@+id/google_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        gbp:type="chrome_floating_circles"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -58,7 +60,8 @@
             android:hint="@string/account_number"
             android:inputType="number"
             android:padding="10dp"
-            android:textColorHint="@color/black">
+            android:textColor="@color/black"
+            android:textColorHint="@color/hintColour">
 
         </EditText>
 
@@ -75,7 +78,8 @@
             android:hint="@string/pin"
             android:inputType="numberPassword"
             android:padding="10dp"
-            android:textColorHint="@color/black">
+            android:textColor="@color/black"
+            android:textColorHint="@color/hintColour">
 
         </EditText>
 
@@ -91,10 +95,13 @@
 
         <Button
             android:id="@+id/login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_background"
             android:text="@string/submit">
 
         </Button>

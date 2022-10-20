@@ -32,7 +32,7 @@ public class loginActivity extends AppCompatActivity {
     EditText accountNumber,pin;
     TextView openAccount,forgetPassword;
     Button submit;
-    ProgressBar loginProgress;
+   ProgressBar loginProgress;
     String accNum,pinNum;
 
     @SuppressLint("MissingInflatedId")
@@ -48,7 +48,7 @@ public class loginActivity extends AppCompatActivity {
         pin=findViewById(R.id.pin);
         openAccount=findViewById(R.id.sign_up);
         submit = findViewById(R.id.login);
-        loginProgress=findViewById(R.id.loginProgressBar);
+        loginProgress=findViewById(R.id.google_progress);
         loginProgress.setVisibility(View.INVISIBLE);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#8A4A4646</color>
-    <color name="red">#D20808</color>
+    <color name="redcolour">#D20808</color>
+    <color name="hintColour">#757575</color>
+    <color name="my_spinner_text_color">#8BC34A</color>
 </resources>
