@@ -25,10 +25,11 @@
          />
 
     <TextView
+        android:id="@+id/txtCurrentAccountBalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="A/C bal:  ₹5230.33/-"
+        android:text="A/C bal:  ₹0"
         android:textColor="@color/black"
         android:textSize="23sp"
         android:textAlignment="center"
@@ -40,6 +41,12 @@
             android:orientation="vertical"
             android:background="@drawable/ic_baseline_currency_rupee_24"
             >
+            <ProgressBar
+                android:id="@+id/dipositPageProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,19 +54,21 @@
                 android:padding="5dp"
                 android:background="#2196F3"
                 >
+
                 <TextView
                     android:id="@+id/txtDipositAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enter Amount"
                     android:textColor="@color/black"
-                    android:textSize="17sp"
-                    />
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/txtEnterAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="₹0"
+                    android:text=""
+                    android:hint="₹1000"
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:layout_below="@id/txtDipositAmount"
@@ -75,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹500"
+                        android:text="500"
                         android:padding="10dp"
                         android:textSize="20sp"
                         android:background="@drawable/recomand_amount_background"
@@ -84,7 +93,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹1000"
+                        android:text="1000"
                         android:layout_margin="2.5dp"
                         android:padding="10dp"
                         android:textSize="20sp"
@@ -94,7 +103,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹2000"
+                        android:text="2000"
                         android:layout_margin="2.5dp"
                         android:padding="10dp"
                         android:textSize="20sp"
@@ -104,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="₹5000"
+                        android:text="5000"
                         android:padding="10dp"
                         android:textSize="20sp"
                         android:background="@drawable/recomand_amount_background"
@@ -115,6 +124,7 @@
             </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnProceed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
