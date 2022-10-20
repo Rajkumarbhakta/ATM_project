@@ -46,7 +46,7 @@ public class Deposit extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChild(accNumInDiposit)){
                     previousBalance=snapshot.child(accNumInDiposit).child("balance").getValue(String.class);
-                    presentBalance.setText("\"A/C bal:  ₹"+previousBalance);
+                    presentBalance.setText("A/C bal:  ₹"+previousBalance);
                     loaddingDiposit.setVisibility(View.INVISIBLE);
                 }
             }
@@ -78,7 +78,7 @@ public class Deposit extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         txtEnterAmount.setText("");
-                        presentBalance.setText("\"A/C bal:  ₹"+totalAmountF);
+                        presentBalance.setText("A/C bal:  ₹"+totalAmountF);
                     }
                 });
                 dipositStatusDialog.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
