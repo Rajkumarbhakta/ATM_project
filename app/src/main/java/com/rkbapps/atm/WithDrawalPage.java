@@ -1,5 +1,6 @@
 package com.rkbapps.atm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,18 +12,47 @@ import android.view.SurfaceControl;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class WithDrawalPage extends AppCompatActivity {
+    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl
+            ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
    Button withDraw;
    EditText moneyAmount;
+   String accNumC,previousBalance,enterAmount,totalAmountF;
+   TextView presentBalance;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_with_drawal_page);
         withDraw=findViewById(R.id.withdrawBtn);
+        presentBalance=findViewById(R.id.bal);
         moneyAmount=findViewById(R.id.txtWidthdrawlAmount);
+        Intent getDetailsFromMainActivity=getIntent();
+        accNumC=getDetailsFromMainActivity.getStringExtra("account no for credit");
+        databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(accNumC)){
+                    previousBalance=snapshot.child(accNumC).child("balance").getValue(String.class);
+                    presentBalance.setText("A/C bal:  ₹"+previousBalance);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         withDraw.setOnClickListener(new View.OnClickListener() {
@@ -46,10 +76,22 @@ public class WithDrawalPage extends AppCompatActivity {
                     builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(WithDrawalPage.this, "YES clicked", Toast.LENGTH_SHORT).show();
-                            Intent y = new Intent(WithDrawalPage.this, TransactionDetails.class);
-                            startActivity(y);
-                            finish();
+
+                            enterAmount =moneyAmount.getText().toString();
+                            int previousAmount=Integer.parseInt(previousBalance);
+                            int credAmount=Integer.parseInt(enterAmount);
+                            if(previousAmount>=credAmount) {
+                                int totalAmount = previousAmount - credAmount;
+                                totalAmountF = Integer.toString(totalAmount);
+                                //new balance update in database
+                                databaseReference.child("user").child(accNumC).child("balance").setValue(totalAmountF);
+                                Intent y = new Intent(WithDrawalPage.this, TransactionDetails.class);
+                                startActivity(y);
+                                finish();
+                            }else{
+                                Toast.makeText(WithDrawalPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
+                            }
+//                            Toast.makeText(WithDrawalPage.this, "YES clicked", Toast.LENGTH_SHORT).show();
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

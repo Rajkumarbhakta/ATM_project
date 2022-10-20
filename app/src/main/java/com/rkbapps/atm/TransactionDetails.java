@@ -5,9 +5,11 @@ import static java.time.LocalDate.now;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,18 +21,23 @@ import java.util.Date;
 
 public class TransactionDetails extends AppCompatActivity {
    TextView TransactionID,Amount,localDate,localTime;
+   EditText txtMoney;
    private TextView dateDisplay;
    private Calendar calendar;
    private SimpleDateFormat dateFormat;
    private SimpleDateFormat timeFormat,transactionIdFormat;
    private String date,time,id;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_details);
         TransactionID=findViewById(R.id.transactionID);
         Amount=findViewById(R.id.Amount);
+        txtMoney=findViewById(R.id.txtWidthdrawlAmount);
+//        String mon=txtMoney.getText().toString();
+//        Amount.setText("100");
         localDate=(TextView) findViewById(R.id.LocalDate);
         localTime=findViewById(R.id.LocalTime);
 //        calendar=Calendar.getInstance();
@@ -43,6 +50,7 @@ public class TransactionDetails extends AppCompatActivity {
         timeFormat = new SimpleDateFormat("HH:mm:ss");
         time=timeFormat.format(new Date());
         localTime.setText(time);
+
 
 
 
