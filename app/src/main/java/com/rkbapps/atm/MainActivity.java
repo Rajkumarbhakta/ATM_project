@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 //DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
 Toolbar toolbar;
-Button checkBalance,btnWithdrawal,btnChangePin,btnDeposit;
+Button checkBalance,btnWithdrawal,btnChangePin,btnDeposit,btnFastCash;
 TextView greetings;
 String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -38,6 +38,7 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
         checkBalance=findViewById(R.id.btnCheckBalance);
         btnChangePin=findViewById(R.id.btnChangePin);
         btnDeposit=findViewById(R.id.btnDeposit);
+        btnFastCash=findViewById(R.id.btnFastCash);
         greetings=findViewById(R.id.txtGreetings);
         //getting details from login activity
         Intent getDetails = getIntent();
@@ -87,6 +88,13 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
                startActivity(i);
            }
        });
+        btnFastCash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(MainActivity.this,fast_cash.class);
+                startActivity(i);
+            }
+        });
 
      //04063
     }
