@@ -13,7 +13,7 @@
         android:id="@+id/acBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Withdarw Money"
+        android:text="Withdraw Money"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:padding="15dp"
@@ -47,7 +47,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        gbp:type="chrome_floating_circles" />
+        gbp:type="chrome_floating_circles"
+        tools:ignore="MissingClass" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -84,7 +85,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:background="@drawable/edit_text_col"
-            android:gravity="center"
+
             android:hint="₹1000"
             android:padding="10dp"
             android:textColor="@color/black"

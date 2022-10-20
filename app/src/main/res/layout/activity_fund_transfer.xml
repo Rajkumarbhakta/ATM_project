@@ -59,6 +59,7 @@
             android:padding="10dp"
             android:textColorHint="@color/gray"
             android:textColor="#D8000000"
+            android:inputType="number"
             android:hint="Enter the amount"
             android:textSize="23sp"
             android:background="@drawable/recomand_amount_background"/>
