@@ -63,7 +63,7 @@ public class WithDrawalPage extends AppCompatActivity {
             public void onClick(View view) {
                 enterAmount=moneyAmount.getText().toString();
                 loaddingWithdrawl.setVisibility(View.VISIBLE);
-                if(enterAmount.isEmpty()){
+                if(enterAmount.isEmpty()||enterAmount.equals("0")){
                     Toast.makeText(WithDrawalPage.this, "Please,Enter amount in multiple of 100/-", Toast.LENGTH_SHORT).show();
                     loaddingWithdrawl.setVisibility(View.INVISIBLE);
                 }else {
