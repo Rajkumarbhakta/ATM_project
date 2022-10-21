@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:gbp="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:gbp="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="5dp"
-        >
+        android:elevation="5dp">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarLogin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_500"
-            >
+            android:background="@color/purple_500">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign in"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -27,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        gbp:type="chrome_floating_circles"/>
+        gbp:type="chrome_floating_circles" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,9 +55,7 @@
             android:id="@+id/account_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
             android:autofillHints="Account Number"
             android:background="@drawable/edit_text_col"
             android:drawableStart="@drawable/ic_baseline_account_circle_24"
@@ -61,17 +64,13 @@
             android:inputType="number"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/hintColour">
-
-        </EditText>
+            android:textColorHint="@color/hintColour" />
 
         <EditText
             android:id="@+id/pin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
             android:background="@drawable/edit_text_col"
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:drawablePadding="7dp"
@@ -79,9 +78,7 @@
             android:inputType="numberPassword"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/hintColour">
-
-        </EditText>
+            android:textColorHint="@color/hintColour" />
 
         <TextView
             android:id="@+id/forget_pin"
@@ -97,12 +94,12 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
-            android:textColor="@color/white"
             android:background="@drawable/btn_background"
-            android:text="@string/submit">
+            android:text="@string/submit"
+            android:textColor="@color/white">
 
         </Button>
 
@@ -112,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:textColor="@color/purple_700"
-            android:text="@string/dont_have_account" />
+            android:text="@string/dont_have_account"
+            android:textColor="@color/purple_700" />
     </LinearLayout>
 </RelativeLayout>

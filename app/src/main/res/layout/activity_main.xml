@@ -11,61 +11,69 @@
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:elevation="5dp"
-        >
+        android:elevation="5dp">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_500"
-            >
+            android:background="@color/purple_500">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ATM"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/appbarlayout"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:layout_below="@+id/appbarlayout"
         android:gravity="center"
         android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imgPayment"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/payment"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgPayment"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/payment" />
 
             <TextView
                 android:id="@+id/txtGreetings"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/imgPayment"
-                android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="@string/hi_user"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
-        </RelativeLayout>
+        </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp">
-        <!--Right side buttons-->
+            <!--Right side buttons-->
             <Button
                 android:id="@+id/btnCheckBalance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginEnd="5dp"
-                android:text="Check Balance"
                 android:background="@drawable/btn_background"
+                android:padding="10dp"
+                android:text="Check Balance"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,11 +84,11 @@
                 android:id="@+id/btnStatement"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
-                android:text="Fund Transfer"
                 android:background="@drawable/btn_background"
+                android:padding="10dp"
+                android:text="Fund Transfer"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,25 +98,25 @@
                 android:id="@+id/btnChangePin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
-                android:text="Change PIN"
                 android:background="@drawable/btn_background"
+                android:padding="10dp"
+                android:text="Change PIN"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnStatement" />
 
-        <!--    left side buttons-->
+            <!--    left side buttons-->
             <Button
                 android:id="@+id/btnFastCash"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Fast Cash"
                 android:background="@drawable/btn_background"
+                android:padding="10dp"
+                android:text="Fast Cash"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnCheckBalance"
@@ -118,11 +126,11 @@
                 android:id="@+id/btnDeposit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Deposit"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_background"
+                android:padding="10dp"
+                android:text="Deposit"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnStatement"
@@ -132,11 +140,11 @@
                 android:id="@+id/btnWithdrawl"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Withdrawl"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_background"
+                android:padding="10dp"
+                android:text="Withdrawl"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnChangePin"

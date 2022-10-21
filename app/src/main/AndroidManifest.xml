@@ -55,7 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".registerActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".splashActivity"
             android:exported="true" >
