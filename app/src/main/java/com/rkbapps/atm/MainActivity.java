@@ -97,6 +97,7 @@ String recAccountNum,recFirstName,recLastName,recMobileNumber,recBalance;
            @Override
            public void onClick(View view) {
                Intent i=new Intent(MainActivity.this,FundTransfer.class);
+               i.putExtra("FundTransferAccount",recAccountNum);
                startActivity(i);
                finish();
            }

@@ -21,7 +21,7 @@ public class TransactionDetails extends AppCompatActivity {
    private Calendar calendar;
    private SimpleDateFormat dateFormat;
    private SimpleDateFormat timeFormat,transactionIdFormat;
-   private String date,time,id,debitAmmount,debitAmountFastCash;
+   private String date,time,id,debitAmmount,debitAmountFastCash,fundTransferMoney;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,10 +39,13 @@ public class TransactionDetails extends AppCompatActivity {
         Intent d=getIntent();
         debitAmmount=d.getStringExtra("debitedAmmount");
         debitAmountFastCash=d.getStringExtra("debitedAmmountFastCash");
+        fundTransferMoney=d.getStringExtra("money");
         if(debitAmmount!=null) {
             Amount.setText("₹" + debitAmmount);
-        }else{
+        }else if(debitAmountFastCash!=null){
             Amount.setText("₹" +debitAmountFastCash);
+        }else if(fundTransferMoney!=null){
+            Amount.setText("₹"+fundTransferMoney);
         }
         dateFormat =new SimpleDateFormat("dd/MM/yyyy");
         transactionIdFormat =new SimpleDateFormat("yyyyHHmmMMdd");
