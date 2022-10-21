@@ -9,17 +9,17 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="account_number">Account Number</string>
-    <string name="pin">PIN</string>
+    <string name="account_number">Enter 10-Digit Account No</string>
+    <string name="pin">Enter 4-Digit pin</string>
     <string name="submit">Submit</string>
-    <string name="new_account">Don\'t have an account ? Sign Up</string>
+    <string name="new_account">Don\'t have an account ? <b>Sign Up</b></string>
     <string name="login">Login</string>
     <string name="forget_password">forget password ?</string>
     <string name="forget_account_number">forget account number ?</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="sign_up">Sign Up</string>
-    <string name="forget_pin">Forget PIN?</string>
-    <string name="dont_have_account">Don\'t Have an Account? Sign Up</string>
+    <string name="forget_pin"><b>Forget PIN?</b></string>
+    <string name="dont_have_account">Don\'t Have an Account? <b>Sign Up</b></string>
     <string name="hi_user">Hi User</string>
     <string name="siign_up_welcome_text">Let\'s Start Your Journey With Us...</string>
     <string name="mobile_number">Mobile Number</string>

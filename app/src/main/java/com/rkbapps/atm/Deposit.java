@@ -92,7 +92,7 @@ public class Deposit extends AppCompatActivity {
             public void onClick(View view) {
                 loaddingDiposit.setVisibility(View.VISIBLE);
                 enterAmount = txtEnterAmount.getText().toString();
-                if (enterAmount.isEmpty()) {
+                if (enterAmount.isEmpty() ||enterAmount.equals("0")) {
                     Toast.makeText(Deposit.this, "Please enter a amount", Toast.LENGTH_SHORT).show();
                     loaddingDiposit.setVisibility(View.INVISIBLE);
                 } else{
