@@ -48,7 +48,7 @@ public class TransactionDetails extends AppCompatActivity {
             Amount.setText("₹"+fundTransferMoney);
         }
         dateFormat =new SimpleDateFormat("dd/MM/yyyy");
-        transactionIdFormat =new SimpleDateFormat("yyyyHHmmMMdd");
+        transactionIdFormat =new SimpleDateFormat("yyyyHHssMMdd");
         id=transactionIdFormat.format(new Date());
         TransactionID.setText(id);
         date = dateFormat.format(new Date());
