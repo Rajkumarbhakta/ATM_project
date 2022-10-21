@@ -29,9 +29,9 @@ public class FastCashPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fast_cash_page);
-
         Intent getDetailsFromMain=getIntent();
         accNum=getDetailsFromMain.getStringExtra("FastCashAccount");
+        ammount=findViewById(R.id.txtSelectedAmmount);
         databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -47,48 +47,48 @@ public class FastCashPage extends AppCompatActivity {
         text100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text100.setTextColor(Color.parseColor("#00FF00"));
-               //ammount.setText();
+                ammount.setText(text100.getText().toString());
+                ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
         text200=findViewById(R.id.text200);
         text200.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text200.setTextColor(Color.parseColor("#00FF00"));
-                enterAmountString=text200.getText().toString();
+                ammount.setText(text200.getText().toString());
+                ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
         text500=findViewById(R.id.text500);
         text500.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text500.setTextColor(Color.parseColor("#00FF00"));
-                enterAmountString=text500.getText().toString();
+                ammount.setText(text500.getText().toString());
+                ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
         text1000=findViewById(R.id.text1000);
         text1000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text1000.setTextColor(Color.parseColor("#00FF00"));
-                enterAmountString=text1000.getText().toString();
+                ammount.setText(text1000.getText().toString());
+                ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
         text1500=findViewById(R.id.text1500);
         text1500.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text1500.setTextColor(Color.parseColor("#00FF00"));
-                enterAmountString=text1500.getText().toString();
+                ammount.setText(text1500.getText().toString());
+                ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
         text2000=findViewById(R.id.text2000);
         text2000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text2000.setTextColor(Color.parseColor("#00FF00"));
-                enterAmountString=text2000.getText().toString();
+                ammount.setText(text2000.getText().toString());
+                ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
 
@@ -105,7 +105,8 @@ public class FastCashPage extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (enterAmountString.isEmpty()) {
+                enterAmountString=ammount.getText().toString();
+                if (enterAmountString.isEmpty() || enterAmountString.equals("0")) {
                     Toast.makeText(FastCashPage.this, "Please select an amount", Toast.LENGTH_SHORT).show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(FastCashPage.this);
