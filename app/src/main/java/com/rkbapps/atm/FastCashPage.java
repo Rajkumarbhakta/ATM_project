@@ -1,9 +1,5 @@
 package com.rkbapps.atm;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,22 +20,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class FastCashPage extends AppCompatActivity {
-    DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
-    String accNum,previousBalanceString,enterAmountString,TotalAmountF;
-    TextView ammount,text100,text200,text500,text1000,text1500,text2000;
+    String accNum, previousBalanceString, enterAmountString, TotalAmountF;
+    TextView ammount, text100, text200, text500, text1000, text1500, text2000;
     Button btnConfirm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fast_cash_page);
-        Intent getDetailsFromMain=getIntent();
-        accNum=getDetailsFromMain.getStringExtra("FastCashAccount");
-        ammount=findViewById(R.id.txtSelectedAmmount);
+        Intent getDetailsFromMain = getIntent();
+        accNum = getDetailsFromMain.getStringExtra("FastCashAccount");
+        ammount = findViewById(R.id.txtSelectedAmmount);
         databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                previousBalanceString=snapshot.child(accNum).child("balance").getValue(String.class);
+                previousBalanceString = snapshot.child(accNum).child("balance").getValue(String.class);
             }
 
             @Override
@@ -43,7 +44,7 @@ public class FastCashPage extends AppCompatActivity {
 
             }
         });
-        text100=findViewById(R.id.text100);
+        text100 = findViewById(R.id.text100);
         text100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +52,7 @@ public class FastCashPage extends AppCompatActivity {
                 ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
-        text200=findViewById(R.id.text200);
+        text200 = findViewById(R.id.text200);
         text200.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +60,7 @@ public class FastCashPage extends AppCompatActivity {
                 ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
-        text500=findViewById(R.id.text500);
+        text500 = findViewById(R.id.text500);
         text500.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +68,7 @@ public class FastCashPage extends AppCompatActivity {
                 ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
-        text1000=findViewById(R.id.text1000);
+        text1000 = findViewById(R.id.text1000);
         text1000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +76,7 @@ public class FastCashPage extends AppCompatActivity {
                 ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
-        text1500=findViewById(R.id.text1500);
+        text1500 = findViewById(R.id.text1500);
         text1500.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +84,7 @@ public class FastCashPage extends AppCompatActivity {
                 ammount.setTextColor(Color.parseColor("#0000FF"));
             }
         });
-        text2000=findViewById(R.id.text2000);
+        text2000 = findViewById(R.id.text2000);
         text2000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +93,7 @@ public class FastCashPage extends AppCompatActivity {
             }
         });
 
-        btnConfirm=findViewById(R.id.btnConfirm);
+        btnConfirm = findViewById(R.id.btnConfirm);
 
 //        int previousAmount = Integer.parseInt(previousBalanceString);
 //        int credAmount = Integer.parseInt(enterAmountString);
@@ -105,13 +106,13 @@ public class FastCashPage extends AppCompatActivity {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                enterAmountString=ammount.getText().toString();
+                enterAmountString = ammount.getText().toString();
                 if (enterAmountString.isEmpty() || enterAmountString.equals("0")) {
                     Toast.makeText(FastCashPage.this, "Please select an amount", Toast.LENGTH_SHORT).show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(FastCashPage.this);
                     builder.setTitle("Alert!");
-                    builder.setMessage("Are you sure want to withdraw ₹"+enterAmountString);
+                    builder.setMessage("Are you sure want to withdraw ₹" + enterAmountString);
                     builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -148,8 +149,9 @@ public class FastCashPage extends AppCompatActivity {
             }
         });
     }
-    public void onBackPressed(){
-        AlertDialog.Builder build= new AlertDialog.Builder(FastCashPage.this);
+
+    public void onBackPressed() {
+        AlertDialog.Builder build = new AlertDialog.Builder(FastCashPage.this);
         build.setMessage("Do you want to exit ?");
 
         build.setTitle("Alert !");
@@ -159,7 +161,7 @@ public class FastCashPage extends AppCompatActivity {
         build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent noBtn=new Intent(FastCashPage.this, loginActivity.class);
+                Intent noBtn = new Intent(FastCashPage.this, loginActivity.class);
                 startActivity(noBtn);
                 finish();
             }

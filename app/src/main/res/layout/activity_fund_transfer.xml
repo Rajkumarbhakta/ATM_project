@@ -1,76 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:gbp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     android:background="@color/white"
+    android:padding="15dp"
     tools:context=".FundTransfer">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="6dp">
-    <TextView
-        android:id="@+id/txts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Send Money"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textSize="23sp"
-        android:textStyle="bold"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_below="@id/txts"
-        android:layout_marginTop="60dp"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/receiverAcc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:inputType="number"
-            android:textColorHint="@color/hintColour"
-            android:textColor="#D8000000"
-            android:drawableLeft="@drawable/bank"
-            android:drawablePadding="5dp"
-            android:hint="Enter Receiver Account No"
-            android:textSize="18sp"
-            android:background="@drawable/edit_text_col"/>
-        <EditText
-            android:id="@+id/receiverName"
-            android:layout_marginTop="17dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="@color/gray"
-            android:textColor="#D8000000"
-            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
-            android:drawablePadding="5dp"
-            android:hint="Enter Receiver Full Name"
-            android:textSize="18sp"
-            android:background="@drawable/edit_text_col"/>
-        <EditText
-            android:id="@+id/quantity"
-            android:layout_marginTop="17dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="@color/gray"
-            android:drawablePadding="5dp"
-            android:drawableLeft="@drawable/ic_baseline_account_balance_wallet_24"
-            android:textColor="#D8000000"
-            android:drawableTint="@color/black"
-            android:inputType="number"
-            android:hint="Enter the amount"
-            android:textSize="18sp"
-            android:background="@drawable/edit_text_col"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/txts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Send Money"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txts"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/receiverAcc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_col"
+                android:drawableLeft="@drawable/bank"
+                android:drawablePadding="5dp"
+                android:hint="Enter Receiver Account No"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="#D8000000"
+                android:textColorHint="@color/hintColour"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/receiverName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edit_text_col"
+                android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+                android:drawablePadding="5dp"
+                android:hint="Enter Receiver Full Name"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#D8000000"
+                android:textColorHint="@color/gray"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/edit_text_col"
+                android:drawableLeft="@drawable/ic_baseline_account_balance_wallet_24"
+                android:drawablePadding="5dp"
+                android:drawableTint="@color/black"
+                android:hint="Enter the amount"
+                android:inputType="number"
+                android:padding="10dp"
+                android:textColor="#D8000000"
+                android:textColorHint="@color/gray"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+            android:id="@+id/fundTransferProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            gbp:type="chrome_floating_circles" />
 
         <Button
             android:id="@+id/btnSend"
