@@ -11,16 +11,13 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-
       android:layout_margin="12dp"
-      android:background="#F2E8DFDF"
-
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="1.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0">
+      app:layout_constraintVertical_bias="0.0">
 
 
     <ImageView
@@ -43,10 +40,10 @@
         android:layout_alignParentEnd="true"
 
         android:layout_marginTop="16dp"
+        android:paddingTop="9dp"
         android:text="BGPRAS Bank"
         android:textColor="@color/black"
         android:textStyle="bold|italic"
-        android:paddingTop="9dp"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -58,7 +55,6 @@
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
         android:background="@color/purple_500"
         android:paddingVertical="6dp"
         android:text="Please Select The Withdrawl Amount"
@@ -67,45 +63,34 @@
         android:textSize="18sp"
         android:textStyle="bold"
 
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.707" />
 
-    <TextView
-        android:id="@+id/SelectedAmount"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/recomand_amount_background"
-        android:hint="Selected Amount"
-        android:textColorHint="#755E5E"
-        android:textColor="@color/black"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:padding="10dp"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:gravity="center"
-        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        app:layout_constraintTop_toTopOf="parent">
 
       <LinearLayout
+          android:id="@+id/linearLayout2"
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
           android:layout_marginHorizontal="5dp"
           android:gravity="start"
-          android:orientation="vertical">
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toStartOf="@+id/guideline8"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text100"
@@ -154,11 +139,16 @@
       </LinearLayout>
 
       <LinearLayout
+          android:id="@+id/linearLayout"
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
-          android:layout_marginHorizontal="5dp"
           android:layout_gravity="right"
-          android:orientation="vertical">
+          android:layout_marginHorizontal="5dp"
+          android:orientation="vertical"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="@+id/guideline8"
+          app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text200"
@@ -205,23 +195,33 @@
             android:textSize="20sp"
             android:textStyle="bold" />
       </LinearLayout>
-    </LinearLayout>
+
+      <androidx.constraintlayout.widget.Guideline
+          android:id="@+id/guideline8"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/btnConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="6dp"
-        android:layout_marginTop="136dp"
+        android:background="@drawable/btn_background"
         android:padding="8dp"
         android:text="Confirm"
+        android:textColor="@color/white"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:layout_constraintVertical_bias="0.535" />
+
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

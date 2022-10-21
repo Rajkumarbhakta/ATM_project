@@ -32,16 +32,27 @@
         android:layout_below="@+id/appbarlayout"
         android:gravity="center"
         android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgPayment"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/payment"/>
 
-        <TextView
-            android:id="@+id/txtGreetings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/hi_user"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
+            <TextView
+                android:id="@+id/txtGreetings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgPayment"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/hi_user"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+        </RelativeLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

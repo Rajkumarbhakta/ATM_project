@@ -25,7 +25,7 @@ public class FundTransfer extends AppCompatActivity {
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     EditText receiverAcc,receiverName,quantity;
     Button send;
-    String receiveAccString,receiverNameString,quantityString;
+    String receiveAccString,receiverNameString,quantityString,senderAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,8 @@ public class FundTransfer extends AppCompatActivity {
         receiverName=findViewById(R.id.receiverName);
         quantity=findViewById(R.id.quantity);
         send=findViewById(R.id.btnSend);
-
+        Intent get=getIntent();
+        senderAccount=get.getStringExtra("FundTransferAccount");
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +52,8 @@ public class FundTransfer extends AppCompatActivity {
 
                             if (snapshot.hasChild(receiveAccString)) {
                                 String getFName = snapshot.child(receiveAccString).child("firstName").getValue(String.class);
-                                String getLName = snapshot.child(receiveAccString).child("lastName").getValue(String.class);
-                                String getFullName = getFName.concat(getLName);
+                                String getLName=snapshot.child(receiveAccString).child("lastName").getValue(String.class);
+                                String getFullName =getFName+" "+getLName;
                                 if (Objects.equals(getFullName, receiverNameString)) {
                                     Toast.makeText(FundTransfer.this, "Thikthak", Toast.LENGTH_SHORT).show();
                                 } else {

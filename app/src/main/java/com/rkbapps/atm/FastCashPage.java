@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class FastCashPage extends AppCompatActivity {
     DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReferenceFromUrl
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     String accNum,previousBalanceString,enterAmountString,TotalAmountF;
-    TextView SelectedAmount,text100,text200,text500,text1000,text1500,text2000;
+    TextView ammount,text100,text200,text500,text1000,text1500,text2000;
     Button btnConfirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,49 +47,51 @@ public class FastCashPage extends AppCompatActivity {
         text100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SelectedAmount.setText("100");
+                text100.setTextColor(Color.parseColor("#00FF00"));
+               //ammount.setText();
             }
         });
         text200=findViewById(R.id.text200);
         text200.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SelectedAmount.setText("200");
+                text200.setTextColor(Color.parseColor("#00FF00"));
+                enterAmountString=text200.getText().toString();
             }
         });
         text500=findViewById(R.id.text500);
         text500.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SelectedAmount.setText("500");
+                text500.setTextColor(Color.parseColor("#00FF00"));
+                enterAmountString=text500.getText().toString();
             }
         });
         text1000=findViewById(R.id.text1000);
         text1000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                SelectedAmount.setText("1000");
+                text1000.setTextColor(Color.parseColor("#00FF00"));
+                enterAmountString=text1000.getText().toString();
             }
         });
         text1500=findViewById(R.id.text1500);
         text1500.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                SelectedAmount.setText("1500");
+                text1500.setTextColor(Color.parseColor("#00FF00"));
+                enterAmountString=text1500.getText().toString();
             }
         });
         text2000=findViewById(R.id.text2000);
         text2000.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                SelectedAmount.setText("2000");
+                text2000.setTextColor(Color.parseColor("#00FF00"));
+                enterAmountString=text2000.getText().toString();
             }
         });
 
-        SelectedAmount=findViewById(R.id.SelectedAmount);
         btnConfirm=findViewById(R.id.btnConfirm);
 
 //        int previousAmount = Integer.parseInt(previousBalanceString);
@@ -97,47 +100,50 @@ public class FastCashPage extends AppCompatActivity {
 //        TotalAmountF = Integer.toString(totalAmount);
 //        //new balance update in database
 //        databaseReference.child("user").child(accNum).child("balance").setValue(TotalAmountF);
+
+
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                enterAmountString=SelectedAmount.getText().toString();
-                AlertDialog.Builder builder = new AlertDialog.Builder(FastCashPage.this);
-                builder.setTitle("Alert!");
-                builder.setMessage("Are you sure want to withdraw the money ?");
-                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        int previousAmount = Integer.parseInt(previousBalanceString);
-                        int credAmount = Integer.parseInt(enterAmountString);
-                        if (previousAmount >= credAmount) {
-                            int totalAmount = previousAmount - credAmount;
-                            TotalAmountF = Integer.toString(totalAmount);
-                            //new balance update in database
-                            databaseReference.child("user").child(accNum).child("balance").setValue(TotalAmountF);
-                            Intent y = new Intent(FastCashPage.this, TransactionDetails.class);
-                            y.putExtra("debitedAmmountFastCash",enterAmountString);
+                if (enterAmountString.isEmpty()) {
+                    Toast.makeText(FastCashPage.this, "Please select an amount", Toast.LENGTH_SHORT).show();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(FastCashPage.this);
+                    builder.setTitle("Alert!");
+                    builder.setMessage("Are you sure want to withdraw ₹"+enterAmountString);
+                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            int previousAmount = Integer.parseInt(previousBalanceString);
+                            int credAmount = Integer.parseInt(enterAmountString);
+                            if (previousAmount >= credAmount) {
+                                int totalAmount = previousAmount - credAmount;
+                                TotalAmountF = Integer.toString(totalAmount);
+                                //new balance update in database
+                                databaseReference.child("user").child(accNum).child("balance").setValue(TotalAmountF);
+                                Intent y = new Intent(FastCashPage.this, TransactionDetails.class);
+                                y.putExtra("debitedAmmount", "" + credAmount);
 //                            loaddingWithdrawl.setVisibility(View.INVISIBLE);
-                            startActivity(y);
-                            finish();
-                        } else {
-                            Toast.makeText(FastCashPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
+                                startActivity(y);
+                                finish();
+                            } else {
+                                Toast.makeText(FastCashPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
 //                            loaddingWithdrawl.setVisibility(View.INVISIBLE);
+                            }
                         }
-//                            Toast.makeText(WithDrawalPage.this, "YES clicked", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(FastCashPage.this, "No clicked", Toast.LENGTH_SHORT).show();
-                        Intent noBtn = new Intent(FastCashPage.this, loginActivity.class);
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent noBtn = new Intent(FastCashPage.this, loginActivity.class);
 //                        loaddingWithdrawl.setVisibility(View.INVISIBLE);
-                        startActivity(noBtn);
-                        finish();
-                    }
-                });
-                AlertDialog aler = builder.create();
-                aler.show();
+                            startActivity(noBtn);
+                            finish();
+                        }
+                    });
+                    AlertDialog aler = builder.create();
+                    aler.show();
+                }
             }
         });
     }
@@ -152,7 +158,6 @@ public class FastCashPage extends AppCompatActivity {
         build.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(FastCashPage.this, "Yes clicked", Toast.LENGTH_SHORT).show();
                 Intent noBtn=new Intent(FastCashPage.this, loginActivity.class);
                 startActivity(noBtn);
                 finish();
@@ -163,7 +168,5 @@ public class FastCashPage extends AppCompatActivity {
         });
         AlertDialog alertDialog = build.create();
         alertDialog.show();
-
-
     }
 }

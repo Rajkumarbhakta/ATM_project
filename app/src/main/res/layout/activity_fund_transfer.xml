@@ -10,9 +10,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="6dp"
-        android:background="#F2E8DFDF">
+        android:padding="6dp">
     <TextView
+        android:id="@+id/txts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -24,10 +24,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:padding="10dp"
-
-
+        android:layout_below="@id/txts"
+        android:layout_marginTop="60dp"
         android:orientation="vertical">
         <EditText
             android:id="@+id/receiverAcc"
@@ -39,7 +38,7 @@
             android:textColor="#D8000000"
             android:hint="Enter Receiver Account No"
             android:textSize="23sp"
-            android:background="@drawable/recomand_amount_background"/>
+            android:background="@drawable/edit_text_col"/>
         <EditText
             android:id="@+id/receiverName"
             android:layout_marginTop="17dp"
@@ -50,7 +49,7 @@
             android:textColor="#D8000000"
             android:hint="Enter Receiver Full Name"
             android:textSize="23sp"
-            android:background="@drawable/recomand_amount_background"/>
+            android:background="@drawable/edit_text_col"/>
         <EditText
             android:id="@+id/quantity"
             android:layout_marginTop="17dp"
@@ -62,11 +61,7 @@
             android:inputType="number"
             android:hint="Enter the amount"
             android:textSize="23sp"
-            android:background="@drawable/recomand_amount_background"/>
-
-
-
-
+            android:background="@drawable/edit_text_col"/>
 
     </LinearLayout>
 
@@ -80,7 +75,6 @@
             android:layout_marginEnd="234dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/card" />
-
         <TextView
             android:layout_width="55dp"
             android:layout_height="wrap_content"
@@ -100,6 +94,7 @@
         android:background="@drawable/btn_background"
         android:textColor="@color/white"
         android:textSize="17sp"
+        android:layout_marginBottom="30dp"
         android:textStyle="bold" />
     </RelativeLayout>
 
