@@ -123,7 +123,7 @@ public class FastCashPage extends AppCompatActivity {
                                 //new balance update in database
                                 databaseReference.child("user").child(accNum).child("balance").setValue(TotalAmountF);
                                 Intent y = new Intent(FastCashPage.this, TransactionDetails.class);
-                                y.putExtra("debitedAmmount", "" + credAmount);
+                                y.putExtra("debitedAmmountFastCash", "" + credAmount);
 //                            loaddingWithdrawl.setVisibility(View.INVISIBLE);
                                 startActivity(y);
                                 finish();
