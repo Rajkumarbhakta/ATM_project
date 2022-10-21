@@ -34,10 +34,12 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:inputType="number"
-            android:textColorHint="@color/gray"
+            android:textColorHint="@color/hintColour"
             android:textColor="#D8000000"
+            android:drawableLeft="@drawable/bank"
+            android:drawablePadding="5dp"
             android:hint="Enter Receiver Account No"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:background="@drawable/edit_text_col"/>
         <EditText
             android:id="@+id/receiverName"
@@ -47,8 +49,10 @@
             android:padding="10dp"
             android:textColorHint="@color/gray"
             android:textColor="#D8000000"
+            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+            android:drawablePadding="5dp"
             android:hint="Enter Receiver Full Name"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:background="@drawable/edit_text_col"/>
         <EditText
             android:id="@+id/quantity"
@@ -57,45 +61,29 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColorHint="@color/gray"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/ic_baseline_account_balance_wallet_24"
             android:textColor="#D8000000"
+            android:drawableTint="@color/black"
             android:inputType="number"
             android:hint="Enter the amount"
-            android:textSize="23sp"
+            android:textSize="18sp"
             android:background="@drawable/edit_text_col"/>
 
     </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="59dp"
-            android:layout_above="@+id/btnSend"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="81dp"
-            android:layout_marginEnd="234dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/card" />
-        <TextView
-            android:layout_width="55dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btnSend"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="30dp"
-            android:text="BGPRAS Bank"
-            android:textColor="@color/black" />
-
         <Button
-        android:id="@+id/btnSend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Send"
-        android:background="@drawable/btn_background"
-        android:textColor="@color/white"
-        android:textSize="17sp"
-        android:layout_marginBottom="30dp"
-        android:textStyle="bold" />
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="430dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/btn_background"
+            android:text="Send"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 
