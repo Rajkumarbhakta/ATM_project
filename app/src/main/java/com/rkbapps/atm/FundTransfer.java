@@ -46,8 +46,8 @@ public class FundTransfer extends AppCompatActivity {
                 receiveAccString=receiverAcc.getText().toString();
                 receiverNameString=receiverName.getText().toString();
                 quantityString=quantity.getText().toString();
-                if(receiveAccString.length()!=10){
-                    Toast.makeText(FundTransfer.this, "Invalid account no format.", Toast.LENGTH_SHORT).show();
+                if(receiveAccString.length()!=10 || receiveAccString.equals(senderAccount) || quantityString.isEmpty() ||quantityString.equals("0")){
+                    Toast.makeText(FundTransfer.this, "Invalid account no or invalid amount.", Toast.LENGTH_SHORT).show();
                 }else {
 
 //                    this is for previous balance of sender//
@@ -101,13 +101,16 @@ public class FundTransfer extends AppCompatActivity {
                                         totalAmountF = Integer.toString(totalAmount);
                                          //new balance update in database
                                         databaseReference.child("user").child(senderAccount).child("balance").setValue(totalAmountF);
+                                        int totalMoney=receiverPreviousBalanceInt+credAmount;
+                                        String totalMoneyF=Integer.toString(totalMoney);
+                                        databaseReference.child("user").child(receiveAccString).child("balance").setValue(totalMoneyF);
+                                        i.putExtra("money", quantityString);
+                                        startActivity(i);
+                                        finish();
+                                    }else{
+                                        Toast.makeText(FundTransfer.this, "Aukaat K bahar", Toast.LENGTH_SHORT).show();
                                     }
-                                    int totalMoney=receiverPreviousBalanceInt+credAmount;
-                                    String totalMoneyF=Integer.toString(totalMoney);
-                                    databaseReference.child("user").child(receiveAccString).child("balance").setValue(totalMoneyF);
-                                    i.putExtra("money", quantityString);
-                                    startActivity(i);
-                                    finish();
+
                                 } else {
                                     Toast.makeText(FundTransfer.this, "Please,Check Your details.", Toast.LENGTH_SHORT).show();
                                 }
