@@ -25,7 +25,9 @@ public class FundTransfer extends AppCompatActivity {
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     EditText receiverAcc,receiverName,quantity;
     Button send;
-    String receiveAccString,receiverNameString,quantityString,senderAccount;
+    int receiverPreviousBalanceInt;
+    String receiveAccString,receiverNameString,quantityString,senderAccount,senderPreviousBalance,totalAmountF
+            ,receiverPreviousBalance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,7 @@ public class FundTransfer extends AppCompatActivity {
         Intent get=getIntent();
         senderAccount=get.getStringExtra("FundTransferAccount");
 
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,8 +47,40 @@ public class FundTransfer extends AppCompatActivity {
                 receiverNameString=receiverName.getText().toString();
                 quantityString=quantity.getText().toString();
                 if(receiveAccString.length()!=10){
-                    Toast.makeText(FundTransfer.this, "Invalid account no format", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FundTransfer.this, "Invalid account no format.", Toast.LENGTH_SHORT).show();
                 }else {
+
+//                    this is for previous balance of sender//
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(senderAccount)){
+                                senderPreviousBalance=snapshot.child(senderAccount).child("balance").getValue(String.class);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+//                    this is for receiver previous balance
+                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(receiveAccString)){
+                                receiverPreviousBalance=snapshot.child(receiveAccString).child("balance").getValue(String.class);
+                                receiverPreviousBalanceInt =Integer.parseInt(receiverPreviousBalance);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
+
+//                    this is for transaction details as well as receiver
                     databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -54,10 +89,27 @@ public class FundTransfer extends AppCompatActivity {
                                 String getFName = snapshot.child(receiveAccString).child("firstName").getValue(String.class);
                                 String getLName=snapshot.child(receiveAccString).child("lastName").getValue(String.class);
                                 String getFullName =getFName+" "+getLName;
+
                                 if (Objects.equals(getFullName, receiverNameString)) {
-                                    Toast.makeText(FundTransfer.this, "Thikthak", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(FundTransfer.this, "Thikthak", Toast.LENGTH_SHORT).show();
+
+                                    Intent i = new Intent(FundTransfer.this, TransactionDetails.class);
+                                    int previousAmount = Integer.parseInt(senderPreviousBalance);
+                                    int credAmount = Integer.parseInt(quantityString);
+                                    if (previousAmount >= credAmount) {
+                                        int totalAmount = previousAmount - credAmount;
+                                        totalAmountF = Integer.toString(totalAmount);
+                                         //new balance update in database
+                                        databaseReference.child("user").child(senderAccount).child("balance").setValue(totalAmountF);
+                                    }
+                                    int totalMoney=receiverPreviousBalanceInt+credAmount;
+                                    String totalMoneyF=Integer.toString(totalMoney);
+                                    databaseReference.child("user").child(receiveAccString).child("balance").setValue(totalMoneyF);
+                                    i.putExtra("money", quantityString);
+                                    startActivity(i);
+                                    finish();
                                 } else {
-                                    Toast.makeText(FundTransfer.this, "Vul", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(FundTransfer.this, "Please,Check Your details.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
@@ -67,10 +119,7 @@ public class FundTransfer extends AppCompatActivity {
 
                         }
                     });
-                    Intent i = new Intent(FundTransfer.this, TransactionDetails.class);
-                    i.putExtra("money", quantityString);
-                    startActivity(i);
-                    finish();
+
                 }
             }
         });
