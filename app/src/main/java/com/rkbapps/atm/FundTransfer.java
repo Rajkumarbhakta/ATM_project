@@ -127,6 +127,7 @@ public class FundTransfer extends AppCompatActivity {
                                             } else {
                                                 Toast.makeText(FundTransfer.this, "Aukaat K bahar", Toast.LENGTH_SHORT).show();
                                                 loaddingFundTransfer.setVisibility(View.INVISIBLE);
+                                                sendMonyDialog.dismiss();
                                             }
                                         }
                                     });
