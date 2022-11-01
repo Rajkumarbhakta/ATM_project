@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import es.dmoral.toasty.Toasty;
+
 public class WithDrawalPage extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     Button withDraw;
@@ -64,7 +66,7 @@ public class WithDrawalPage extends AppCompatActivity {
                 enterAmount = moneyAmount.getText().toString();
                 loaddingWithdrawl.setVisibility(View.VISIBLE);
                 if (enterAmount.isEmpty() || enterAmount.equals("0")) {
-                    Toast.makeText(WithDrawalPage.this, "Please,Enter amount in multiple of 100/-", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(WithDrawalPage.this, "Please,Enter amount in multiple of 100/-", Toast.LENGTH_SHORT).show();
                     loaddingWithdrawl.setVisibility(View.INVISIBLE);
                 } else {
                     // int amm=Integer.parseInt(moneyAmount.getText().toString());
@@ -99,7 +101,7 @@ public class WithDrawalPage extends AppCompatActivity {
                                     startActivity(y);
                                     finish();
                                 } else {
-                                    Toast.makeText(WithDrawalPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
+                                    Toasty.error(WithDrawalPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
                                     loaddingWithdrawl.setVisibility(View.INVISIBLE);
                                 }
 //                            Toast.makeText(WithDrawalPage.this, "YES clicked", Toast.LENGTH_SHORT).show();

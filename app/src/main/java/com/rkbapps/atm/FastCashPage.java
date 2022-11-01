@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import es.dmoral.toasty.Toasty;
+
 public class FastCashPage extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
@@ -108,7 +110,7 @@ public class FastCashPage extends AppCompatActivity {
             public void onClick(View view) {
                 enterAmountString = ammount.getText().toString();
                 if (enterAmountString.isEmpty() || enterAmountString.equals("0")) {
-                    Toast.makeText(FastCashPage.this, "Please select an amount", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(FastCashPage.this, "Please select an amount", Toast.LENGTH_SHORT).show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(FastCashPage.this);
                     builder.setTitle("Alert!");
@@ -129,7 +131,7 @@ public class FastCashPage extends AppCompatActivity {
                                 startActivity(y);
                                 finish();
                             } else {
-                                Toast.makeText(FastCashPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
+                                Toasty.error(FastCashPage.this, "Aukaat hai tere itne money account mein rakhne ke liye.", Toast.LENGTH_SHORT).show();
 //                            loaddingWithdrawl.setVisibility(View.INVISIBLE);
                             }
                         }

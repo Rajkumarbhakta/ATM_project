@@ -34,6 +34,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import es.dmoral.toasty.Toasty;
+
 public class registerActivity extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     ProgressBar loadingRegister;
@@ -90,7 +92,7 @@ public class registerActivity extends AppCompatActivity {
                 genarateOtpClicked++;
                 loadingRegister.setVisibility(View.VISIBLE);
                 if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || Gender.equals("Select Gender") || mobileNumber.length() != 10 || pin.isEmpty() || confirmPin.isEmpty()) {
-                    Toast.makeText(registerActivity.this, "Give all details Properly", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(registerActivity.this, "Give all details Properly", Toast.LENGTH_SHORT).show();
                     loadingRegister.setVisibility(View.INVISIBLE);
                 } else {
                     //Sending otp
@@ -143,10 +145,10 @@ public class registerActivity extends AppCompatActivity {
                         || mobileNumber.isEmpty() || pin.isEmpty() || confirmPin.isEmpty() ||
                         Gender.equals("Select Gender")
                 ) {
-                    Toast.makeText(registerActivity.this, "Please give us the proper details", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(registerActivity.this, "Please give us the proper details", Toast.LENGTH_SHORT).show();
                     loadingRegister.setVisibility(View.INVISIBLE);
                 } else if (enterOtpForReg.isEmpty()) {
-                    Toast.makeText(registerActivity.this, "Enter OTP", Toast.LENGTH_SHORT).show();
+                    Toasty.error(registerActivity.this, "Enter OTP", Toast.LENGTH_SHORT).show();
                     loadingRegister.setVisibility(View.INVISIBLE);
                 } else {
                     if (genarateOtpClicked == 0) {
@@ -174,11 +176,11 @@ public class registerActivity extends AppCompatActivity {
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             if (snapshot.hasChild(mobileNumber)) {
                                                 //check if already have account
-                                                Toast.makeText(registerActivity.this, "Already Have account with this Mobile Number", Toast.LENGTH_SHORT).show();
+                                                Toasty.error(registerActivity.this, "Already Have account with this Mobile Number", Toast.LENGTH_SHORT).show();
                                                 loadingRegister.setVisibility(View.INVISIBLE);
                                             } else {
                                                 if (mobileNumber.length() != 10 || pin.length() != 4 || !pin.equals(confirmPin)) {
-                                                    Toast.makeText(registerActivity.this, "Please Recheck details and enter correctly", Toast.LENGTH_SHORT).show();
+                                                    Toasty.error(registerActivity.this, "Please Recheck details and enter correctly", Toast.LENGTH_SHORT).show();
                                                     loadingRegister.setVisibility(View.INVISIBLE);
                                                 } else {
                                                     databaseReference.child("user").child(mobileNumber).child("firstName").setValue(firstName);
@@ -208,7 +210,7 @@ public class registerActivity extends AppCompatActivity {
 
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) {
-                                            Toast.makeText(registerActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                            Toasty.error(registerActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
 

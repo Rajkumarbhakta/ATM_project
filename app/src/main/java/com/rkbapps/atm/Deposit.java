@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import es.dmoral.toasty.Toasty;
+
 public class Deposit extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
@@ -94,7 +96,7 @@ public class Deposit extends AppCompatActivity {
                 loaddingDiposit.setVisibility(View.VISIBLE);
                 enterAmount = txtEnterAmount.getText().toString();
                 if (enterAmount.isEmpty() || enterAmount.equals("0")) {
-                    Toast.makeText(Deposit.this, "Please enter a amount", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(Deposit.this, "Please enter a amount", Toast.LENGTH_SHORT).show();
                     loaddingDiposit.setVisibility(View.INVISIBLE);
                 } else {
                     int previousAmount = Integer.parseInt(previousBalance);

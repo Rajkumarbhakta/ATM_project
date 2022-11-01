@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
+import es.dmoral.toasty.Toasty;
+
 public class FundTransfer extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl
             ("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
@@ -56,7 +58,7 @@ public class FundTransfer extends AppCompatActivity {
                 receiverNameString = receiverName.getText().toString();
                 quantityString = quantity.getText().toString();
                 if (receiveAccString.length() != 10 || receiveAccString.equals(senderAccount) || quantityString.isEmpty() || quantityString.equals("0")) {
-                    Toast.makeText(FundTransfer.this, "Invalid account no or invalid amount.", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(FundTransfer.this, "Invalid account no or invalid amount.", Toast.LENGTH_SHORT).show();
                     loaddingFundTransfer.setVisibility(View.INVISIBLE);
                 } else {
 //                    fetching sender details
@@ -71,7 +73,7 @@ public class FundTransfer extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(FundTransfer.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toasty.error(FundTransfer.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                             loaddingFundTransfer.setVisibility(View.INVISIBLE);
                         }
                     });
@@ -125,7 +127,7 @@ public class FundTransfer extends AppCompatActivity {
                                                 startActivity(i);
                                                 finish();
                                             } else {
-                                                Toast.makeText(FundTransfer.this, "Aukaat K bahar", Toast.LENGTH_SHORT).show();
+                                                Toasty.error(FundTransfer.this, "Aukaat K bahar", Toast.LENGTH_SHORT).show();
                                                 loaddingFundTransfer.setVisibility(View.INVISIBLE);
                                                 sendMonyDialog.dismiss();
                                             }
@@ -142,19 +144,19 @@ public class FundTransfer extends AppCompatActivity {
                                     loaddingFundTransfer.setVisibility(View.INVISIBLE);
                                     sendMonyDialog.show();
                                 } else {
-                                    Toast.makeText(FundTransfer.this, "Please,Check Your details.", Toast.LENGTH_SHORT).show();
+                                    Toasty.error(FundTransfer.this, "Please,Check Your details.", Toast.LENGTH_SHORT).show();
                                     loaddingFundTransfer.setVisibility(View.INVISIBLE);
                                 }
 
                             }else {
-                                Toast.makeText(FundTransfer.this, "Account Dose not exist", Toast.LENGTH_SHORT).show();
+                                Toasty.error(FundTransfer.this, "Account Dose not exist", Toast.LENGTH_SHORT).show();
                                 loaddingFundTransfer.setVisibility(View.INVISIBLE);
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(FundTransfer.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toasty.error(FundTransfer.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                             loaddingFundTransfer.setVisibility(View.INVISIBLE);
                         }
                     });

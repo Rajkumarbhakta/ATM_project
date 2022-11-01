@@ -33,6 +33,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
+import es.dmoral.toasty.Toasty;
+
 public class ForgetPinPage extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     Toolbar forgetPinToolbar;
@@ -96,7 +98,7 @@ public class ForgetPinPage extends AppCompatActivity {
                             }
                     );
                 } else {
-                    Toast.makeText(ForgetPinPage.this, "Please Enter Proper Details", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(ForgetPinPage.this, "Please Enter Proper Details", Toast.LENGTH_SHORT).show();
                     loaddingForgetPin.setVisibility(View.INVISIBLE);
                 }
             }
@@ -111,16 +113,16 @@ public class ForgetPinPage extends AppCompatActivity {
                 enteredOtp = Otp.getText().toString();
                 loaddingForgetPin.setVisibility(View.VISIBLE);
                 if (accNum.isEmpty() && email.isEmpty()) {
-                    Toast.makeText(ForgetPinPage.this, "Please enter your account number and register email id.", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(ForgetPinPage.this, "Please enter your account number and register email id.", Toast.LENGTH_SHORT).show();
                     loaddingForgetPin.setVisibility(View.INVISIBLE);
                 } else if (email.isEmpty()) {
-                    Toast.makeText(ForgetPinPage.this, "Please enter your register email id.", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(ForgetPinPage.this, "Please enter your register email id.", Toast.LENGTH_SHORT).show();
                     loaddingForgetPin.setVisibility(View.INVISIBLE);
                 } else if (accNum.isEmpty()) {
-                    Toast.makeText(ForgetPinPage.this, "Please enter your account number", Toast.LENGTH_SHORT).show();
+                    Toasty.warning(ForgetPinPage.this, "Please enter your account number", Toast.LENGTH_SHORT).show();
                     loaddingForgetPin.setVisibility(View.INVISIBLE);
                 } else if (enteredOtp.isEmpty()) {
-                    Toast.makeText(ForgetPinPage.this, "Please enter OTP", Toast.LENGTH_SHORT).show();
+                    Toasty.error(ForgetPinPage.this, "Please enter OTP", Toast.LENGTH_SHORT).show();
                     loaddingForgetPin.setVisibility(View.INVISIBLE);
                 } else {
                     //check if otp generated
@@ -182,14 +184,14 @@ public class ForgetPinPage extends AppCompatActivity {
                                                                 loaddingForgetPin.setVisibility(View.INVISIBLE);
                                                                 pinChangeDoneAlert.show();
                                                             } else {
-                                                                Toast.makeText(ForgetPinPage.this, "Recheck PIN", Toast.LENGTH_SHORT).show();
+                                                                Toasty.error(ForgetPinPage.this, "Recheck PIN", Toast.LENGTH_SHORT).show();
                                                             }
                                                         }
                                                     });
                                                     loaddingForgetPin.setVisibility(View.INVISIBLE);
                                                     dialog.show();
                                                 } else {
-                                                    Toast.makeText(ForgetPinPage.this, "Wrong credential", Toast.LENGTH_SHORT).show();
+                                                    Toasty.error(ForgetPinPage.this, "Wrong credential", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         }

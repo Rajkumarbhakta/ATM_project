@@ -18,10 +18,12 @@ public class splashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
         FirebaseApp.initializeApp(splashActivity.this);
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
         firebaseAppCheck.installAppCheckProviderFactory(SafetyNetAppCheckProviderFactory.getInstance());
-        //getSupportActionBar().hide();
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

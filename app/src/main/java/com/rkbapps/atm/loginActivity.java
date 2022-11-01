@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
+import es.dmoral.toasty.Toasty;
+
 public class loginActivity extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://atm-project-1dbee-default-rtdb.firebaseio.com/");
     Toolbar toolbarLogin;
@@ -67,7 +69,7 @@ public class loginActivity extends AppCompatActivity {
                             String getBalance = snapshot.child(accNum).child("balance").getValue(String.class);
                             //check if pin is correct
                             if (Objects.equals(getPin, pinNum)) {
-                                Toast.makeText(loginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                Toasty.success(loginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                 Intent inextMain = new Intent(loginActivity.this, MainActivity.class);
                                 inextMain.putExtra("accountNum", accNum);
                                 inextMain.putExtra("firstName", getFirstName);
@@ -78,11 +80,11 @@ public class loginActivity extends AppCompatActivity {
                                 finish();
                                 loginProgress.setVisibility(View.INVISIBLE);
                             } else {
-                                Toast.makeText(loginActivity.this, "Wrong Account number or PIN", Toast.LENGTH_SHORT).show();
+                                Toasty.error(loginActivity.this, "Wrong Account number or PIN", Toast.LENGTH_SHORT).show();
                                 loginProgress.setVisibility(View.INVISIBLE);
                             }
                         } else if (pinNum.isEmpty()) {
-                            Toast.makeText(loginActivity.this, "Please Enter PIN", Toast.LENGTH_SHORT).show();
+                            Toasty.warning(loginActivity.this, "Please Enter PIN", Toast.LENGTH_SHORT).show();
                             loginProgress.setVisibility(View.INVISIBLE);
                         } else {
                             AlertDialog.Builder donthaveAccountAlert = new AlertDialog.Builder(loginActivity.this);
@@ -103,7 +105,7 @@ public class loginActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(loginActivity.this, "" + error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toasty.error(loginActivity.this, "" + error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
 
